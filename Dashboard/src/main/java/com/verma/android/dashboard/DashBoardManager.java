@@ -35,9 +35,9 @@ import timber.log.Timber;
 
 
 public class DashBoardManager {
-    public static final String USER_AGENT = "Android Application dashboard";
+    public static final String USER_AGENT = "DashBoardManager";
     public static final String APP_AGENT = "V3RMA";
-    private static final String TAG = "ImageSupport";
+    private static final String TAG = "DashBoardManager";
 
     public void setImage(final ImageView pImageView, int pImageResId, String pURl) {
         if (!TextUtils.isEmpty(pURl)) {
@@ -63,20 +63,35 @@ public class DashBoardManager {
         dashBoardGrid.setColumnCount(spanCount);
     }
 
-    public void setupDashboard(Context pContext, GridLayout dashBoardGrid,int spanCount, ArrayList<DashBoardItem> dashBoardItems, DashboardClickListener dashboardClickListener ) {
+    public void setupDashboard(boolean textOnly, Context pContext, GridLayout dashBoardGrid,int spanCount, List<DashBoardItem> dashBoardItems, DashboardClickListener dashboardClickListener ) {
         if(null == dashBoardGrid ){
             return;
         }
         setupGrid(dashBoardGrid, spanCount);
         dashBoardGrid.removeAllViews();
-        Collections.sort(dashBoardItems, Comparator.comparing(o -> o.getName().toLowerCase()));
 
         for( DashBoardItem item : dashBoardItems ) {
             GridLayout.LayoutParams lParams = getLayoutParams();
             try{
-                DashboardView dashboardView = new DashboardView(pContext);
-                dashboardView.setLayoutParams(lParams);
-                dashboardView.setDashBoardItem(item, dashboardClickListener);
+                DashboardView dashboardView = getDashboardView(textOnly,pContext, dashboardClickListener, item, lParams);
+                dashBoardGrid.addView(dashboardView );
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+
+    }
+    public void setupDashboard(Context pContext, GridLayout dashBoardGrid,int spanCount, List<DashBoardItem> dashBoardItems, DashboardClickListener dashboardClickListener ) {
+        if(null == dashBoardGrid ){
+            return;
+        }
+        setupGrid(dashBoardGrid, spanCount);
+        dashBoardGrid.removeAllViews();
+
+        for( DashBoardItem item : dashBoardItems ) {
+            GridLayout.LayoutParams lParams = getLayoutParams();
+            try{
+                DashboardView dashboardView = getDashboardView(false,pContext, dashboardClickListener, item, lParams);
                 dashBoardGrid.addView(dashboardView );
             }catch (Exception e){
                 e.printStackTrace();
@@ -84,6 +99,18 @@ public class DashBoardManager {
 
         }
 
+    }
+
+
+    @NonNull
+    private DashboardView getDashboardView(boolean textOnly, Context pContext, DashboardClickListener dashboardClickListener, DashBoardItem item, GridLayout.LayoutParams lParams) {
+        DashboardView dashboardView = new DashboardView(pContext);
+        dashboardView.setLayoutParams(lParams);
+        if(textOnly){
+            dashboardView.setUpOnlyText();
+        }
+        dashboardView.setDashBoardItem(item, dashboardClickListener);
+        return dashboardView;
     }
 
     private GlideUrl getGlideUrl(String pURL) {
@@ -172,8 +199,5 @@ public class DashBoardManager {
 
     public GridLayout getGridLayout(View includedLayout) {
         return (GridLayout) includedLayout.findViewById(com.verma.android.dashboard.R.id.child_board_grid);
-    }
-
-    public void updateDashboard(ArrayList<DashBoardItem> dashBoardItems) {
     }
 }

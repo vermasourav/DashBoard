@@ -11,6 +11,8 @@ import com.verma.android.dashboard.DashboardClickListener;
 import com.verma.android.dashboard.DashBoardManager;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import timber.log.Timber;
 
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         View includedLayout =  findViewById(R.id.dashboard);
         ArrayList<DashBoardItem> dashBoardItems = dashBoardManager.getDashBoardItems(this,"content_dashboard.json");
+        Collections.sort(dashBoardItems, Comparator.comparing(o -> o.getName().toLowerCase()));
         dashBoardManager.setupDashboard(this,dashBoardManager.getGridLayout(includedLayout),2,dashBoardItems,dashboardClickListener);
     }
 
