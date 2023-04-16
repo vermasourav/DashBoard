@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <color name="dashboard_header_bg_color">#B2DFDB</color>
+    <color name="dashboard_header_divider_color">#BDBDBD</color>
+    <color name="dashboard_text_color">#000000</color>
+    <color name="dashboard_background_color">#F4EEEE</color>
+
+</resources>

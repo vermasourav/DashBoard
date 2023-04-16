@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="dashboard_background_color">@color/black</color>
+    <color name="dashboard_header_bg_color">@color/purple_200</color>
+    <color name="dashboard_header_divider_color">@color/purple_200</color>
+    <color name="dashboard_text_color">@color/purple_500</color>
+</resources>
