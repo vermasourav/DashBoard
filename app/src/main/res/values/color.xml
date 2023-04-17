@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="dashboard_background_color">#F4EEEE</color>
+    <color name="dashboard_background_color">#798976</color>
     <color name="dashboard_text_color">@android:color/black</color>
 </resources>
