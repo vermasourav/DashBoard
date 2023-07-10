@@ -21,4 +21,4 @@
 #-renamesourcefileattribute SourceFile
 
 -keep class androidx.databinding.** { *; }
--keep class * extends androidx.databinding.DataBinderMapper { *;
+-keep class * extends androidx.databinding.DataBinderMapper { *; }

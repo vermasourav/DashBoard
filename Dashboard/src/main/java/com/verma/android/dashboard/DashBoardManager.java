@@ -145,6 +145,9 @@ public class DashBoardManager {
     }
 
     public ArrayList<DashBoardItem> getDashBoardItems(Context context, String fileName) {
+        return getDashBoardItems(context,fileName,false);
+    }
+    public ArrayList<DashBoardItem> getDashBoardItems(Context context, String fileName, boolean isSorting) {
         ArrayList<DashBoardItem> dashBoardItems = new ArrayList<>();
         try {
             Gson gson = new GsonBuilder().create();
@@ -156,7 +159,9 @@ public class DashBoardManager {
                 if(null == childes){
                     childes = new ArrayList<>();
                 }
-                Collections.sort(childes, Comparator.comparing(o -> o.getChildName().toLowerCase()));
+                if(isSorting){
+                    Collections.sort(childes, Comparator.comparing(o -> o.getChildName().toLowerCase()));
+                }
 
                 DashBoardItem item =
                         new DashBoardItem.DashBoardItemBuilder()
@@ -170,7 +175,9 @@ public class DashBoardManager {
                     dashBoardItems.add(item);
                 }
             });
-
+            if(isSorting){
+                Collections.sort(dashBoardItems, Comparator.comparing(o -> o.getName().toLowerCase()));
+            }
         } catch (Exception e) {
             e.printStackTrace();
             //DO Nothing

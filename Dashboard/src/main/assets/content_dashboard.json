@@ -2,12 +2,6 @@
   "groups": [
     {
       "from": "https://www.calculator.net/financial-calculator.html",
-      "visible": true,  "name": "sourav",
-      "image_url": "https://toppng.com/uploads/preview/time-and-date-icon-11549792838b97dvthvmd.png",
-      "childs": []
-    },
-    {
-      "from": "https://www.calculator.net/financial-calculator.html",
       "visible": true,  "name": "Date and Time",
       "image_url": "https://toppng.com/uploads/preview/time-and-date-icon-11549792838b97dvthvmd.png",
       "childs": []

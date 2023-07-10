@@ -2,7 +2,7 @@ package com.verma.android.dashboardsample;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.GridLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         DashBoardManager dashBoardManager = new DashBoardManager();
 
         View includedLayout =  findViewById(R.id.dashboard);
+       // ArrayList<DashBoardItem> dashBoardItems = dashBoardManager.getDashBoardItems(this,"content_dashboard.json", true);
         ArrayList<DashBoardItem> dashBoardItems = dashBoardManager.getDashBoardItems(this,"content_dashboard.json");
         Collections.sort(dashBoardItems, Comparator.comparing(o -> o.getName().toLowerCase()));
         dashBoardManager.setupDashboard(this,dashBoardManager.getGridLayout(includedLayout),2,dashBoardItems,dashboardClickListener);
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     DashboardClickListener dashboardClickListener = (v, dashBoardItem) -> {
         if(dashBoardItem.getChilds() != null){
+            Toast.makeText(this,dashBoardItem.getName(),Toast.LENGTH_LONG).show();
             Timber.tag(TAG).d("onClick: %s", dashBoardItem.getChilds().toString());
         }
     };
