@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         dashBoardManager.setupDashboard(this,dashBoardManager.getGridLayout(includedLayout),2,dashBoardItems,dashboardClickListener);
     }
 
+    
     DashboardClickListener dashboardClickListener = (v, dashBoardItem) -> {
         if(dashBoardItem.getChilds() != null){
             Toast.makeText(this,dashBoardItem.getName(),Toast.LENGTH_LONG).show();
