@@ -1,7 +1,7 @@
 # DashBoard
 DashBoard
 ---
-implementation 'com.github.vermasourav:DashBoard:1.0.1'
+  implementation 'com.github.vermasourav:DashBoard:1.0.6'
 ---
 
 XML Code
@@ -22,12 +22,12 @@ XML Code
         android:columnOrderPreserved="false"
         android:padding="8dp" />
 </ScrollView>
+
 ---
+
 Android Code
 
 ---
-  
-
 
      public void setupDashboard() {
         setupGrid();
@@ -67,6 +67,7 @@ Json File at asserts
 
 ---
 content_dashboard.json
+
 {
   "groups": [
     {
