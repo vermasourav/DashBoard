@@ -3,22 +3,23 @@ DashBoard
 
 XML Code
 ---
- <ScrollView
-                android:id="@+id/scrollable"
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent">
 
-                <GridLayout
-                    android:id="@+id/dash_board_grid"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:alignmentMode="alignMargins"
-                    android:columnCount="2"
-                    android:horizontalSpacing="8dp"
-                    android:footerDividersEnabled="false"
-                    android:columnOrderPreserved="false"
-                    android:padding="8dp" />
-            </ScrollView>
+<ScrollView
+    android:id="@+id/scrollable"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent">
+
+      <GridLayout
+          android:id="@+id/dash_board_grid"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:alignmentMode="alignMargins"
+          android:columnCount="2"
+          android:horizontalSpacing="8dp"
+          android:footerDividersEnabled="false"
+          android:columnOrderPreserved="false"
+          android:padding="8dp" />
+</ScrollView>
 ---
 Android Code
 
@@ -26,38 +27,38 @@ Android Code
   
 
 
-     public void setupDashboard() {
-        setupGrid();
-        DashBoardManager dashBoardManager = new DashBoardManager();
-        ArrayList<DashBoardItem> dashBoardItems = dashBoardManager.getDashBoardItems(getContext(),"content_dashboard.json");
-        Collections.sort(dashBoardItems, Comparator.comparing(o -> o.getName().toLowerCase()));
-        dashBoardManager.setupDashboard(getContext(),binding.dashBoardGrid,3,dashBoardItems,dashboardClickListener);
+   public void setupDashboard() {
+      setupGrid();
+      DashBoardManager dashBoardManager = new DashBoardManager();
+      ArrayList<DashBoardItem> dashBoardItems = dashBoardManager.getDashBoardItems(getContext(),"content_dashboard.json");
+      Collections.sort(dashBoardItems, Comparator.comparing(o -> o.getName().toLowerCase()));
+      dashBoardManager.setupDashboard(getContext(),binding.dashBoardGrid,3,dashBoardItems,dashboardClickListener);
 
-    }
-    DashboardClickListener dashboardClickListener = (v, dashBoardItem) -> {
-        if(dashBoardItem.getChilds() != null){
-            Timber.tag(TAG).d("onClick: %s", dashBoardItem.getChilds().toString());
-            Menu00FragmentDirections.ActionNavHomeToNavOne action = Menu00FragmentDirections.actionNavHomeToNavOne();
-                action.setHEADER(dashBoardItem.getName());
-                action.setCHILDS(new Gson().toJson(dashBoardItem.getChilds()));
-
-
-            Navigation.findNavController(v).navigate((NavDirections) action);
+  }
+  DashboardClickListener dashboardClickListener = (v, dashBoardItem) -> {
+      if(dashBoardItem.getChilds() != null){
+          Timber.tag(TAG).d("onClick: %s", dashBoardItem.getChilds().toString());
+          Menu00FragmentDirections.ActionNavHomeToNavOne action = Menu00FragmentDirections.actionNavHomeToNavOne();
+              action.setHEADER(dashBoardItem.getName());
+              action.setCHILDS(new Gson().toJson(dashBoardItem.getChilds()));
 
 
-        }
-    };
+          Navigation.findNavController(v).navigate((NavDirections) action);
 
-    private void setupGrid() {
-        int orientation = getResources().getConfiguration().orientation;
-        int spanCount;
-        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
-            spanCount = 3;
-        } else {
-            spanCount = 4;
-        }
-        binding.dashBoardGrid.setColumnCount(spanCount);
-    }
+
+      }
+  };
+
+  private void setupGrid() {
+      int orientation = getResources().getConfiguration().orientation;
+      int spanCount;
+      if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+          spanCount = 3;
+      } else {
+          spanCount = 4;
+      }
+      binding.dashBoardGrid.setColumnCount(spanCount);
+  }
 ---
 
 Json File at asserts 
