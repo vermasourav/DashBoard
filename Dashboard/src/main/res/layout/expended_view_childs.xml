@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:paddingTop="@dimen/dashboard_expandable_padding_top"
+    android:paddingBottom="@dimen/dashboard_expandable_padding_bottom"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="2dp"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/holo_blue_dark" />
+
+        <!--  Thumbnail -->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/ll_thumbnail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/thumbnail"
+                android:layout_width="@android:dimen/notification_large_icon_width"
+                android:layout_height="@android:dimen/notification_large_icon_height"
+                android:layout_marginStart="5dp"
+                android:visibility="gone"
+                tools:src="@tools:sample/avatars"
+                tools:visibility="visible" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <!--  Container -->
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/details_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/child"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="5"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:typeface="sans"
+                android:visibility="visible"
+                tools:text="@tools:sample/full_names"
+                tools:visibility="visible" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="5"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:visibility="gone"
+                tools:text="@tools:sample/full_names"
+                tools:visibility="visible" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <!--  Next Thumbnail -->
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/next_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:src="@drawable/ic_navigate_next"
+            android:tint="@color/dashboard_expandable_app_icon" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.appcompat.widget.LinearLayoutCompat>

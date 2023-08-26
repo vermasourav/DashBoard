@@ -1,0 +1,16 @@
+<!--
+  ~ /**
+  ~  * Created by SOURAV VERMA on 07/02/22, 1:10 PM
+  ~  * Copyright (c) 2022 . All rights reserved.
+  ~  * Last modified 07/02/22, 12:26 PM
+  ~  */
+  -->
+
+<resources>
+    <string name="dashboard_expandable_show_more">show more</string>
+    <string name="dashboard_expandable_show_less">show less</string>
+    <string name="dashboard_expandable_show_more_h">→ show more</string>
+    <string name="dashboard_expandable_show_less_h">← less</string>
+    <string name="dashboard_expandable_show_more_v">↓ show more</string>
+    <string name="dashboard_expandable_show_less_v">↑ less</string>
+</resources>

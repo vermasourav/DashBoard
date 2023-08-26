@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ /**
+  ~  * Created by SOURAV VERMA on 07/02/23, 1:10 PM
+  ~  * Copyright (c) 2023 . All rights reserved.
+  ~  * Last modified 07/02/23, 1:39 AM
+  ~  */
+  -->
+
+<resources>
+
+    <declare-styleable name="CustomExpandableListView">
+        <attr name="withImage" format="boolean" />
+        <attr name="withSorting" format="boolean" />
+        <attr name="withChildArrow" format="boolean" />
+        <attr name="childMode">
+            <enum name="listMode" value="0"/>
+            <enum name="normal" value="1"/>
+            <enum name="tabMode" value="2"/>
+        </attr>
+    </declare-styleable>
+
+</resources>

@@ -56,4 +56,14 @@ public class Group implements Serializable {
         this.childs = childs;
     }
 
+
+    public Group withName(String pName) {
+        setName(pName);
+        return this;
+    }
+
+    public Group withChilds(List<Child> childList) {
+        setChilds(childList);
+        return this;
+    }
 }

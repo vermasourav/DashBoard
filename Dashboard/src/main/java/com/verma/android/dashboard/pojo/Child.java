@@ -17,6 +17,13 @@ public class Child implements Serializable {
     @Expose
     private boolean visible;
 
+    @SerializedName("child_description")
+    @Expose
+    private String description;
+    @SerializedName("child_thumbnail")
+    @Expose
+    private String thumbnail;
+
 
     public Integer getChildId() {
         return childId;
@@ -52,5 +59,41 @@ public class Child implements Serializable {
         sb.append('}');
         sb.append('\n');
         return sb.toString();
+    }
+
+    public Child withName(String childName) {
+        setChildName(childName);
+        return this;
+    }
+
+    public Child withId(int pID) {
+        setChildId(pID);
+        return this;
+    }
+
+    public Child withThumbnail(String thumbnail) {
+        setThumbnail(thumbnail);
+        return this;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+
+    public String getThumbnail() {
+        return "";
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Child withDescription(String description) {
+        setDescription(description);
+        return this;
     }
 }

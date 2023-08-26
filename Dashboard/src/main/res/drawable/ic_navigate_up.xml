@@ -1,0 +1,12 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:width="32dp"
+    android:height="32dp"
+    android:tint="@color/dashboard_expandable_app_icon"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="@color/dashboard_expandable_app_icon"
+        android:pathData="M7.41,15.41L12,10.83l4.59,4.58L18,14l-6,-6 -6,6z"
+        tools:fillColor="@color/dashboard_expandable_app_icon" />
+</vector>
