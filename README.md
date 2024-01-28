@@ -16,12 +16,12 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.vermasourav:DashBoard:1.0.7'
+	        implementation 'com.github.vermasourav:DashBoard:1.0.9'
 	}
 
 
 ---
-  implementation 'com.github.vermasourav:DashBoard:1.0.6'
+  implementation 'com.github.vermasourav:DashBoard:1.0.9'
 ---
 
 XML Code
@@ -112,4 +112,42 @@ content_dashboard.json
   ]
 }
 ```
+    <com.verma.android.dashboard.expendview.CustomExpandableListView
+    android:id="@+id/expandable_listview"
+    android:layout_width="wrap_content"
+    android:layout_height="300dp"
+    android:childDivider="@android:color/holo_red_dark"
+    android:divider="#000000"
+    android:dividerHeight="0dp"
+    app:withChildArrow="true"
+    app:withImage= "true"
+    app:withSorting="false"
+    app:childMode="listMode"
+    tools:listitem="@layout/expended_view_childs">
+    </com.verma.android.dashboard.expendview.CustomExpandableListView>
+
+
+        private void intExpendedList() {
+        binding.expandableListview.isWithImage(false);
+        binding.expandableListview.isWithSorting(false);
+        binding.expandableListview.isWithChildArrow(true);
+        binding.expandableListview.withChildMode(1);
+
+        binding.expandableListview.setGroupClickListener((group, groupPos) -> {
+            binding.expandableListview.getGroups().get(groupPos);
+            Timber.tag(TAG).d("You clicked : %s", group.getName());
+        });
+
+        binding.expandableListview.setChildClickListener((child, groupPos, childPos, header) -> {
+            Timber.tag(TAG).d("You clicked : %s", child.getChildName());
+        });
+
+        DashBoardManager dashBoardManager = new DashBoardManager();
+        ArrayList<DashBoardItem> dashBoardItems = dashBoardManager.getDashBoardItems(this,"content_dashboard.json");
+        binding.expandableListview.doUpdate(dashBoardItems);
+
+       // test();
+    }
+
+
 ---
