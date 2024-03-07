@@ -13,7 +13,7 @@
     },
     {
       "from": "",
-      "visible": true,  "name": "Sourav",
+      "visible": true,  "name": "This is sample dashboard item name",
       "image_url": "ic_launcher",
       "childs": []
     },{
@@ -49,6 +49,26 @@
     },{
       "from": "",
       "visible": true,  "name": "Sourav Kumar Verma",
+      "image_url": "",
+      "childs": []
+    },{
+      "from": "",
+      "visible": true,  "name": "Date and Time",
+      "image_url": "",
+      "childs": []
+    },
+    {
+      "visible": true, "name": "Housing / Building",
+      "image_url": "",
+      "childs": []
+    },
+    {
+      "visible": true, "name": "Everyday Utility",
+      "image_url": "",
+      "childs": []
+    },
+    {
+      "visible": true, "name": "Weather",
       "image_url": "",
       "childs": []
     }

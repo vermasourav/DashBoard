@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
        // ArrayList<DashBoardItem> dashBoardItems = dashBoardManager.getDashBoardItems(this,"content_dashboard.json", true);
         ArrayList<DashBoardItem> dashBoardItems = dashBoardManager.getDashBoardItems(this,"content_dashboard.json");
         Collections.sort(dashBoardItems, Comparator.comparing(o -> o.getName().toLowerCase()));
-        dashBoardManager.setupDashboard(this,dashBoardManager.getGridLayout(includedLayout),2,dashBoardItems,dashboardClickListener);
+        dashBoardManager.setupDashboard(this,dashBoardManager.getGridLayout(includedLayout),3,dashBoardItems,dashboardClickListener);
     }
 
     private void intExpendedList() {
