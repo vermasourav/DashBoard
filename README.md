@@ -1,7 +1,9 @@
 # DashBoard
+
 ---
 DashBoard
 ---
+
 
 Add it in your root build.gradle at the end of repositories:
 
@@ -14,7 +16,7 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.vermasourav:DashBoard:1.0.9'
+	        implementation 'com.github.vermasourav:DashBoard:1.0.10'
 	}
 
 
@@ -24,7 +26,6 @@ Step 2. Add the dependency
 
 <h2>XML Code</h2>
 ---
-
 <ScrollView
     android:id="@+id/scrollable"
     android:layout_width="fill_parent"
@@ -43,7 +44,9 @@ Step 2. Add the dependency
 </ScrollView>
 
 ---
-<h2>Android Code</h2>
+
+Android Code
+
 ---
 
      public void setupDashboard() {
@@ -145,4 +148,6 @@ content_dashboard.json
 
        // test();
     }
+
+
 ---
