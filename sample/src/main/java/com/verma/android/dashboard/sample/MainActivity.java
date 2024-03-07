@@ -1,4 +1,4 @@
-package com.verma.android.dashboardsample;
+package com.verma.android.dashboard.sample;
 
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +11,7 @@ import com.verma.android.dashboard.DashBoardItem;
 import com.verma.android.dashboard.DashboardClickListener;
 import com.verma.android.dashboard.DashBoardManager;
 import com.verma.android.dashboard.pojo.Child;
-import com.verma.android.dashboardsample.databinding.ActivityMainBinding;
+import com.verma.android.dashboard.sample.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
 import java.util.Collections;

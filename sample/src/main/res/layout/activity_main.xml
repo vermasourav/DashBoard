@@ -16,7 +16,7 @@
         <com.verma.android.dashboard.expendview.CustomExpandableListView
             android:id="@+id/expandable_listview"
             android:layout_width="wrap_content"
-            android:layout_height="300dp"
+            android:layout_height="200dp"
             android:childDivider="@android:color/holo_red_dark"
             android:divider="#000000"
             android:dividerHeight="0dp"
@@ -33,6 +33,5 @@
             android:layout_height="match_parent"
             layout="@layout/fragment_dashboard" />
     </androidx.appcompat.widget.LinearLayoutCompat>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,7 +5,7 @@
       "visible": true,  "name": "A",
       "image_url": "ic_launcher",
       "childs": [
-        {"child_visible": true, "child_id": 13001, "child_name": "A 3", "child_description":  "This is A3 ggg g  ggg  ggg g g g g g g g g g ggg  gdescription", "child_thumbnail": "https://avatars.githubusercontent.com/u/19544802"},
+        {"child_visible": true, "child_id": 13001, "child_name": "A 3", "child_description":  "This is A3 description", "child_thumbnail": "https://avatars.githubusercontent.com/u/19544802"},
         {"child_visible": true, "child_id": 13002, "child_name": "A","child_description":  "This is A1 description", "child_thumbnail": ""},
         {"child_visible": true, "child_id": 13004, "child_name": "A 4","child_description":  "This is A4 description", "child_thumbnail": ""},
         {"child_visible": true, "child_id": 13009, "child_name": "A 2","child_description":  "This is A2 description", "child_thumbnail": ""}
@@ -13,22 +13,22 @@
     },
     {
       "from": "",
-      "visible": true,  "name": "Sourav Kumar Verma Sourav Kumar",
+      "visible": true,  "name": "Sourav",
       "image_url": "ic_launcher",
       "childs": []
     },{
       "from": "",
-      "visible": true,  "name": "Sourav Kumar Verma Sourav Kumar",
+      "visible": true,  "name": "Sourav",
       "image_url": "https://avatars.githubusercontent.com/u/19544802",
       "childs": []
     },{
       "from": "",
-      "visible": true,  "name": "Sourav Kumar Verma",
+      "visible": true,  "name": "Sourav",
       "image_url": "https://avatars.githubusercontent.com/u/19544802",
       "childs": []
     },{
       "from": "",
-      "visible": true,  "name": "Sourav Kumar",
+      "visible": true,  "name": "Sourav",
       "image_url": "https://avatars.githubusercontent.com/u/19544802",
       "childs": []
     },{

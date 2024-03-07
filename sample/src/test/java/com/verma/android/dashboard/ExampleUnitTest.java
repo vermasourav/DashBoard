@@ -1,4 +1,4 @@
-package com.verma.android.dashboardsample;
+package com.verma.android.dashboard;
 
 import org.junit.Test;
 
