@@ -1,3 +1,11 @@
+/*
+ * Created by: V3RMA SOURAV on 07/03/24, 11:53 pm
+ * Copyright © 2023 All rights reserved
+ * Class name : DashboardView
+ * Last modified:  07/03/24, 10:09 pm
+ * Location: Bangalore, India
+ */
+
 package com.verma.android.dashboard;
 
 import android.content.Context;
@@ -58,12 +66,13 @@ public class DashboardView extends FrameLayout {
         try{
             binding.setItem(dashBoardItem);
             new DashBoardManager().setImage(binding.cardImage,dashBoardItem.getImage(),dashBoardItem.getUrl());
+
+            binding.badgeCount.setVisibility(DashBoardManager.convertCountVisibility(dashBoardItem.getCount()));
             binding.dashboardCard.setOnClickListener(view -> {
                 if(null != dashboardViewClick){
                     dashboardViewClick.onClick(binding.dashboardCard,dashBoardItem);
                 }else{
                     Timber.tag(TAG).d("dashboardViewClick is Null ");
-
                 }
             });
         }catch (Exception e){
@@ -72,8 +81,6 @@ public class DashboardView extends FrameLayout {
     }
 
     public void setUpOnlyText() {
-
         binding.dashboardCard.setMinimumHeight(250);
-        //binding.dashboardCard.setMinimumWidth(100);
     }
 }

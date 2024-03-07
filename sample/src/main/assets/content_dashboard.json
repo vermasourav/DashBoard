@@ -1,9 +1,11 @@
 {
+  "display_count": true,
   "groups": [
     {
       "from": "",
       "visible": true,  "name": "A",
       "image_url": "ic_launcher",
+      "count": "5",
       "childs": [
         {"child_visible": true, "child_id": 13001, "child_name": "A 3", "child_description":  "This is A3 description", "child_thumbnail": "https://avatars.githubusercontent.com/u/19544802"},
         {"child_visible": true, "child_id": 13002, "child_name": "A","child_description":  "This is A1 description", "child_thumbnail": ""},

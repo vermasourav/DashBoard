@@ -1,3 +1,11 @@
+/*
+ * Created by: V3RMA SOURAV on 07/03/24, 11:53 pm
+ * Copyright © 2023 All rights reserved
+ * Class name : DashBoardItem
+ * Last modified:  07/03/24, 10:09 pm
+ * Location: Bangalore, India
+ */
+
 package com.verma.android.dashboard;
 
 import android.widget.ImageView;
@@ -15,6 +23,8 @@ public class DashBoardItem {
     @DrawableRes
     private int image = R.drawable.ic_launcher;
     private int id;
+
+    private  String count;
     private final String name;
     private final String url;
     private List<Child> childs;
@@ -26,6 +36,7 @@ public class DashBoardItem {
         this.url = builder.url;
         this.childs = builder.childs;
         this.id = builder.id;
+        this.count = builder.count;
     }
 
     @BindingAdapter({"android:src"})
@@ -48,6 +59,10 @@ public class DashBoardItem {
         return id;
     }
 
+    public String getCount() {
+        return count;
+    }
+
     public List<Child> getChilds() {
         return childs;
     }
@@ -55,6 +70,7 @@ public class DashBoardItem {
     public static class DashBoardItemBuilder {
 
         private int id;
+        private String count;
         private String url;
         private String name;
         private int image;
@@ -89,6 +105,10 @@ public class DashBoardItem {
         }
         public DashBoardItemBuilder setId(int id) {
             this.id = id;
+            return this;
+        }
+        public DashBoardItemBuilder setCount(String count) {
+            this.count = count;
             return this;
         }
         public DashBoardItem build() {

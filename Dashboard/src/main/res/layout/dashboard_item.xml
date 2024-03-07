@@ -1,3 +1,11 @@
+<!--
+  ~ Created by: V3RMA SOURAV on 07/03/24, 11:53 pm
+  ~ Copyright © 2023 All rights reserved
+  ~ Class name : dashboard_item.xml
+  ~ Last modified:  07/03/24, 11:35 pm
+  ~ Location: Bangalore, India
+  -->
+
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
@@ -28,6 +36,29 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
+
+            <FrameLayout
+                android:id="@+id/viewLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/badgeCount"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:clickable="false"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="top|right"
+                    android:background="@drawable/badge_background"
+                    android:text="@{item.count}"
+                    tools:text="121"
+                    android:textColor="@color/dashboard_text_color"
+                    tools:visibility="visible" />
+            </FrameLayout>
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"

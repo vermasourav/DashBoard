@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?><!--
+  ~ Created by: V3RMA SOURAV on 07/03/24, 11:53 pm
+  ~ Copyright © 2023 All rights reserved
+  ~ Class name : data_extraction_rules.xml
+  ~ Last modified:  07/03/24, 10:09 pm
+  ~ Location: Bangalore, India
+  -->
+
+<!--
    Sample data extraction rules file; uncomment and customize as necessary.
    See https://developer.android.com/about/versions/12/backup-restore#xml-changes
    for details.

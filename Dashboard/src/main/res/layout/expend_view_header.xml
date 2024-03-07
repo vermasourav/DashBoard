@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by: V3RMA SOURAV on 07/03/24, 11:53 pm
+  ~ Copyright © 2023 All rights reserved
+  ~ Class name : expend_view_header.xml
+  ~ Last modified:  07/03/24, 10:09 pm
+  ~ Location: Bangalore, India
+  -->
+
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"

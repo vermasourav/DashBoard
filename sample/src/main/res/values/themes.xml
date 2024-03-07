@@ -1,3 +1,11 @@
+<!--
+  ~ Created by: V3RMA SOURAV on 07/03/24, 11:53 pm
+  ~ Copyright © 2023 All rights reserved
+  ~ Class name : themes.xml
+  ~ Last modified:  07/03/24, 10:09 pm
+  ~ Location: Bangalore, India
+  -->
+
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.DashboardSample" parent="Theme.AppCompat.Light.DarkActionBar">

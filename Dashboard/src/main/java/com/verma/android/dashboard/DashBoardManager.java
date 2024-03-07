@@ -1,3 +1,11 @@
+/*
+ * Created by: V3RMA SOURAV on 07/03/24, 11:53 pm
+ * Copyright © 2023 All rights reserved
+ * Class name : DashBoardManager
+ * Last modified:  07/03/24, 10:09 pm
+ * Location: Bangalore, India
+ */
+
 package com.verma.android.dashboard;
 
 import android.content.Context;
@@ -17,6 +25,8 @@ import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.LazyHeaders;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.google.gson.ExclusionStrategy;
+import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.verma.android.dashboard.pojo.Child;
@@ -47,7 +57,10 @@ public class DashBoardManager {
                 pImageView.setImageResource(pImageResId);
             }
         }
+    }
 
+    public static int convertCountVisibility(String pValue) {
+        return pValue == null || pValue.isEmpty() || pValue.equalsIgnoreCase("0")? View.GONE : View.VISIBLE;
     }
 
 
@@ -62,8 +75,12 @@ public class DashBoardManager {
     private void setupGrid(GridLayout dashBoardGrid , int spanCount) {
         dashBoardGrid.setColumnCount(spanCount);
     }
-
-    public void setupDashboard(boolean textOnly, Context pContext, GridLayout dashBoardGrid,int spanCount, List<DashBoardItem> dashBoardItems, DashboardClickListener dashboardClickListener ) {
+    public void setupDashboard(
+            boolean textOnly,
+            Context pContext,
+            GridLayout dashBoardGrid,
+            int spanCount, List<DashBoardItem> dashBoardItems,
+            DashboardClickListener dashboardClickListener ) {
         if(null == dashBoardGrid ){
             return;
         }
@@ -81,7 +98,12 @@ public class DashBoardManager {
         }
 
     }
-    public void setupDashboard(Context pContext, GridLayout dashBoardGrid,int spanCount, List<DashBoardItem> dashBoardItems, DashboardClickListener dashboardClickListener ) {
+    public void setupDashboard(Context pContext,
+                               GridLayout dashBoardGrid,
+                               int spanCount,
+                               List<DashBoardItem> dashBoardItems,
+                               DashboardClickListener dashboardClickListener
+    ) {
         if(null == dashBoardGrid ){
             return;
         }
@@ -150,10 +172,21 @@ public class DashBoardManager {
     public ArrayList<DashBoardItem> getDashBoardItems(Context context, String fileName, boolean isSorting) {
         ArrayList<DashBoardItem> dashBoardItems = new ArrayList<>();
         try {
-            Gson gson = new GsonBuilder().create();
+            Gson gson = new GsonBuilder()
+                    .setExclusionStrategies(new ExclusionStrategy() {
+                        @Override
+                        public boolean shouldSkipField(FieldAttributes f) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean shouldSkipClass(Class<?> clazz) {
+                            return false;
+                        }
+                    }).create();
             DashBoardGroup dashboardGroup = gson.fromJson(loadJSONFromAsset(context, fileName), DashBoardGroup.class);
             final List<Group> groups = dashboardGroup.getGroups();
-
+            boolean isCountDisp = dashboardGroup.isCountDisplay();
             groups.forEach((group) -> {
                 List<Child>  childes =  group.getChilds();
                 if(null == childes){
@@ -162,18 +195,24 @@ public class DashBoardManager {
                 if(isSorting){
                     Collections.sort(childes, Comparator.comparing(o -> o.getChildName().toLowerCase()));
                 }
-
+                String count="";
+                if(isCountDisp){
+                    count  =childes.size()+"";
+                }
                 DashBoardItem item =
                         new DashBoardItem.DashBoardItemBuilder()
                                 .setURL(group.getImageUrl())
                                 .setName(group.getName())
                                 .setVisible(group.isVisible())
                                 .setChilds(childes)
+                                .setCount(count)
                                 .build();
+
 
                 if(group.isVisible()){
                     dashBoardItems.add(item);
                 }
+
             });
             if(isSorting){
                 Collections.sort(dashBoardItems, Comparator.comparing(o -> o.getName().toLowerCase()));
@@ -206,5 +245,8 @@ public class DashBoardManager {
 
     public GridLayout getGridLayout(View includedLayout) {
         return (GridLayout) includedLayout.findViewById(com.verma.android.dashboard.R.id.child_board_grid);
+    }
+
+    public void setCountVisiable(boolean isVisable) {
     }
 }

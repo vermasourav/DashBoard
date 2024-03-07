@@ -1,3 +1,11 @@
+/*
+ * Created by: V3RMA SOURAV on 07/03/24, 11:53 pm
+ * Copyright © 2023 All rights reserved
+ * Class name : MainActivity
+ * Last modified:  07/03/24, 11:46 pm
+ * Location: Bangalore, India
+ */
+
 package com.verma.android.dashboard.sample;
 
 import android.os.Bundle;
@@ -35,12 +43,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void setupDashboard() {
         DashBoardManager dashBoardManager = new DashBoardManager();
+        dashBoardManager.setCountVisiable(true);
 
         View includedLayout =  findViewById(R.id.dashboard);
        // ArrayList<DashBoardItem> dashBoardItems = dashBoardManager.getDashBoardItems(this,"content_dashboard.json", true);
         ArrayList<DashBoardItem> dashBoardItems = dashBoardManager.getDashBoardItems(this,"content_dashboard.json");
         Collections.sort(dashBoardItems, Comparator.comparing(o -> o.getName().toLowerCase()));
-        dashBoardManager.setupDashboard(this,dashBoardManager.getGridLayout(includedLayout),3,dashBoardItems,dashboardClickListener);
+        dashBoardManager.setupDashboard(this,dashBoardManager.getGridLayout(includedLayout),2,dashBoardItems,dashboardClickListener);
     }
 
     private void intExpendedList() {

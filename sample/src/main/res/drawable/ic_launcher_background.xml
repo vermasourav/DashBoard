@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by: V3RMA SOURAV on 07/03/24, 11:53 pm
+  ~ Copyright © 2023 All rights reserved
+  ~ Class name : ic_launcher_background.xml
+  ~ Last modified:  07/03/24, 10:09 pm
+  ~ Location: Bangalore, India
+  -->
+
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
     android:height="108dp"

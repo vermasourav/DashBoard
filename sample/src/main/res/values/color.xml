@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by: V3RMA SOURAV on 07/03/24, 11:53 pm
+  ~ Copyright © 2023 All rights reserved
+  ~ Class name : color.xml
+  ~ Last modified:  07/03/24, 11:38 pm
+  ~ Location: Bangalore, India
+  -->
+
 <resources>
     <color name="dashboard_background_color">#798976</color>
     <color name="dashboard_text_color">@android:color/black</color>
