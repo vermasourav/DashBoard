@@ -11,7 +11,7 @@
         android:id="@+id/dashboardItems"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="2dp"
+        android:padding="5dp"
         android:background="@android:color/transparent"
         app:cardBackgroundColor="@color/dashboard_background_color">
 
@@ -19,9 +19,9 @@
             android:id="@+id/dashboardCard"
             android:minHeight="140dp"
             android:minWidth="250dp"
-            android:layout_margin="3dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            tools:cardBackgroundColor="@color/dashboard_header_divider_color"
             app:cardBackgroundColor="@color/dashboard_background_color"
             app:cardCornerRadius="8dp"
             app:cardElevation="6dp"
@@ -31,9 +31,9 @@
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_margin="6dp"
+                android:padding="6dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -45,7 +45,9 @@
                     android:adjustViewBounds="true"
                     android:maxHeight="@dimen/dashboard_image_max_height"
                     android:maxWidth="@dimen/dashboard_image_max_width"
+                    android:visibility="visible"
                     android:scaleType="centerInside"
+                    tools:src="@drawable/ic_launcher"
                     android:src="@{item.image, default=@drawable/ic_launcher}"
                     />
 
@@ -59,6 +61,7 @@
                     tools:text="@tools:sample/lorem/random"
                     android:layout_marginTop="8dp"
                     android:maxLines="3"
+                    tools:textColor="@android:color/red"
                     android:textColor="@color/dashboard_text_color"
                     />
             </androidx.appcompat.widget.LinearLayoutCompat>
