@@ -16,12 +16,12 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.vermasourav:DashBoard:1.0.10'
+	        implementation 'com.github.vermasourav:DashBoard:1.0.11'
 	}
 
 
 ---
-  implementation 'com.github.vermasourav:DashBoard:1.0.9'
+  implementation 'com.github.vermasourav:DashBoard:1.0.11'
 ---
 
 <h2>XML Code</h2>
@@ -45,7 +45,7 @@ Step 2. Add the dependency
 
 ---
 
-Android Code
+<h2>Android Code</h2>
 
 ---
 
@@ -90,7 +90,8 @@ Json File at asserts
 content_dashboard.json
 
 {
-  "groups": [
+    "display_count": true,
+    "groups": [
     {
       "from": "l",
       "visible": true,  "name": "Date and Time",
@@ -113,21 +114,26 @@ content_dashboard.json
 }
 ```
     <com.verma.android.dashboard.expendview.CustomExpandableListView
-    android:id="@+id/expandable_listview"
-    android:layout_width="wrap_content"
-    android:layout_height="300dp"
-    android:childDivider="@android:color/holo_red_dark"
-    android:divider="#000000"
-    android:dividerHeight="0dp"
-    app:withChildArrow="true"
-    app:withImage= "true"
-    app:withSorting="false"
-    app:childMode="listMode"
-    tools:listitem="@layout/expended_view_childs">
+        android:id="@+id/expandable_listview"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:childDivider="@android:color/holo_red_dark"
+        android:divider="#000000"
+        android:dividerHeight="0dp"
+        app:withChildArrow="true"
+        app:withImage= "true"
+        app:withSorting="false"
+        app:childMode="listMode"
+        tools:listitem="@layout/expended_view_childs">
     </com.verma.android.dashboard.expendview.CustomExpandableListView>
 
+---
 
-        private void intExpendedList() {
+Expended List
+
+---
+
+    private void intExpendedList() {
         binding.expandableListview.isWithImage(false);
         binding.expandableListview.isWithSorting(false);
         binding.expandableListview.isWithChildArrow(true);
