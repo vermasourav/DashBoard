@@ -93,21 +93,24 @@ content_dashboard.json
     "display_count": true,
     "groups": [
     {
-      "from": "l",
+     "description": "description Date and Time",
       "visible": true,  "name": "Date and Time",
       "image_url": "https://toppng.com/uploads/preview/time-and-date-icon-11549792838b97dvthvmd.png",
-      "childs": [{
-      "visible": true, "name": "Internet",
-      "image_url": "https://toppng.com/uploads/preview/internet-png-transparent-internet-internet-clipart-11563103281ozh1yuvgcl.png",
-      "childs": []
+      "childs": [
+        {
+          "visible": true, "name": "Internet",
+          "image_url": "",
+          "childs": []
     },
     {
+      "description": "description Date and Time",
       "visible": true, "name": "Engineering Unit",
       "image_url": "",
       "childs": [
-        {"child_visible": true, "child_id": 13001, "child_name": "Temperature"},
-        {"child_visible": true, "child_id": 13002, "child_name": "Angle"},
-        {"child_visible": true, "child_id": 13002, "child_name": "Moment Of Force / Torque"}
+        {"visible": true, "id": 1300, "name": "A","description":  "This is A1 description", "thumbnail": ""},
+        {"visible": true, "id": 13001, "name": "Temperature"},
+        {"visible": true, "id": 13002, "name": "Angle"},
+        {"visible": true, "id": 13002, "name": "Moment Of Force / Torque"}
       ]
     }
   ]

@@ -199,17 +199,17 @@ public class DashBoardManager {
                 if(isCountDisp){
                     count  =childes.size()+"";
                 }
-                DashBoardItem item =
-                        new DashBoardItem.DashBoardItemBuilder()
-                                .setURL(group.getImageUrl())
-                                .setName(group.getName())
-                                .setVisible(group.isVisible())
-                                .setChilds(childes)
-                                .setCount(count)
-                                .build();
-
 
                 if(group.isVisible()){
+                    DashBoardItem item =
+                            new DashBoardItem.DashBoardItemBuilder()
+                                    .setURL(group.getImageUrl())
+                                    .setName(group.getName())
+                                    .setVisible(group.isVisible())
+                                    .setChilds(childes)
+                                    .setCount(count)
+                                    .setDescription(group.getDescription())
+                                    .build();
                     dashBoardItems.add(item);
                 }
 

@@ -15,28 +15,28 @@ import java.util.List;
 
 public class DashBoardGroup {
 
-@SerializedName("groups")
-@Expose
-private List<Group> groups;
+    @SerializedName("groups")
+    @Expose
+    private List<Group> groups;
 
-@SerializedName("display_count")
-@Expose
-private boolean countDisplay;
+    @SerializedName("display_count")
+    @Expose
+    private boolean countDisplay;
 
-public List<Group> getGroups() {
-return groups;
-}
+    public List<Group> getGroups() {
+        return groups;
+    }
 
-public void setGroups(List<Group> groups) {
-this.groups = groups;
-}
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
+    }
 
     public boolean isCountDisplay() {
         return countDisplay;
     }
 
     public DashBoardGroup setCountDisplay(boolean countDisplay) {
-        countDisplay = countDisplay;
+        this.countDisplay = countDisplay;
         return this;
     }
 

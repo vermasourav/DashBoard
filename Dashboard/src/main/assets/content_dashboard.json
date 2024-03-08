@@ -2,22 +2,25 @@
   "display_count": true,
   "groups": [
     {
-      "from": "https://www.calculator.net/financial-calculator.html",
+      "description": "description Date and Time",
       "visible": true,  "name": "Date and Time",
       "image_url": "https://toppng.com/uploads/preview/time-and-date-icon-11549792838b97dvthvmd.png",
       "childs": []
     },
     {
+      "description": "description Housing / Building",
       "visible": true, "name": "Housing / Building",
       "image_url": "https://toppng.com/uploads/preview/house-11549430520zm1fbwmws5.png",
       "childs": []
     },
     {
+      "description": "description Everyday Utility",
       "visible": true, "name": "Everyday Utility",
       "image_url": "https://toppng.com/uploads/preview/campaign-production-factory-icon-transparent-background-11563353868vp70t6ierc.png",
       "childs": []
     },
     {
+      "description": "description Weather",
       "visible": true, "name": "Weather",
       "image_url": "https://toppng.com/uploads/preview/weather-11552783005s4hd72yncm.png",
       "childs": []

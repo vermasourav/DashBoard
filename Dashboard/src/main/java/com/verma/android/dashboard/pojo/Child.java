@@ -14,21 +14,21 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class Child implements Serializable {
-    @SerializedName("child_id")
+    @SerializedName("id")
     @Expose
     private Integer childId;
-    @SerializedName("child_name")
+    @SerializedName("name")
     @Expose
     private String childName;
 
-    @SerializedName("child_visible")
+    @SerializedName("visible")
     @Expose
     private boolean visible;
 
-    @SerializedName("child_description")
+    @SerializedName("description")
     @Expose
     private String description;
-    @SerializedName("child_thumbnail")
+    @SerializedName("thumbnail")
     @Expose
     private String thumbnail;
 

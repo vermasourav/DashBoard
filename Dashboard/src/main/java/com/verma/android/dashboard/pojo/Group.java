@@ -19,6 +19,9 @@ public class Group implements Serializable {
     @SerializedName("name")
     @Expose
     private String name;
+    @SerializedName("description")
+    @Expose
+    private String description;
     @SerializedName("visible")
     @Expose
     private boolean visible;
@@ -39,6 +42,13 @@ public class Group implements Serializable {
         this.name = name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.name = description;
+    }
 
     public boolean isVisible() {
         return visible;
@@ -64,9 +74,13 @@ public class Group implements Serializable {
         this.childs = childs;
     }
 
-
     public Group withName(String pName) {
         setName(pName);
+        return this;
+    }
+
+    public Group withDescription(String description) {
+        setDescription(description);
         return this;
     }
 

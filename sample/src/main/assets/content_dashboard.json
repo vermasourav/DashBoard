@@ -2,73 +2,76 @@
   "display_count": true,
   "groups": [
     {
-      "from": "",
+      "description": "",
       "visible": true,  "name": "A",
       "image_url": "ic_launcher",
       "childs": [
-        {"child_visible": true, "child_id": 13001, "child_name": "A 3", "child_description":  "This is A3 description", "child_thumbnail": "https://avatars.githubusercontent.com/u/19544802"},
-        {"child_visible": true, "child_id": 13002, "child_name": "A","child_description":  "This is A1 description", "child_thumbnail": ""},
-        {"child_visible": true, "child_id": 13004, "child_name": "A 4","child_description":  "This is A4 description", "child_thumbnail": ""},
-        {"child_visible": true, "child_id": 13009, "child_name": "A 2","child_description":  "This is A2 description", "child_thumbnail": ""}
+        {"visible": true, "id": 13001, "name": "A 3", "description":  "This is A3 description", "thumbnail": "https://avatars.githubusercontent.com/u/19544802"},
+        {"visible": true, "id": 13002, "name": "A " ,  "description": "This is A1 description", "thumbnail": ""},
+        {"visible": true, "id": 13004, "name": "A 4", "description":  "This is A4 description", "thumbnail": ""},
+        {"visible": true, "id": 13009, "name": "A 2", "description":  "This is A2 description", "thumbnail": ""}
       ]
     },
     {
-      "from": "",
+      "description": "",
       "visible": true,  "name": "This is sample dashboard item name",
       "image_url": "ic_launcher",
       "childs": []
     },{
-      "from": "",
+      "description": "",
       "visible": true,  "name": "Sourav",
       "image_url": "https://avatars.githubusercontent.com/u/19544802",
       "childs": []
     },{
-      "from": "",
+      "description": "",
       "visible": true,  "name": "Sourav",
       "image_url": "https://avatars.githubusercontent.com/u/19544802",
       "childs": []
     },{
-      "from": "",
+      "description": "",
       "visible": true,  "name": "Sourav",
       "image_url": "https://avatars.githubusercontent.com/u/19544802",
       "childs": []
     },{
-      "from": "",
+      "description": "",
       "visible": true,  "name": "Sourav",
       "image_url": "https://avatars.githubusercontent.com/u/19544802",
       "childs": []
     },{
-      "from": "",
+      "description": "",
       "visible": true,  "name": "Sourav",
       "image_url": "",
       "childs": []
     },{
-      "from": "",
+      "description": "",
       "visible": true,  "name": "Sourav Kumar",
       "image_url": "",
       "childs": []
     },{
-      "from": "",
+      "description": "",
       "visible": true,  "name": "Sourav Kumar Verma",
       "image_url": "",
       "childs": []
     },{
-      "from": "",
+      "description": "",
       "visible": true,  "name": "Date and Time",
       "image_url": "",
       "childs": []
     },
     {
+      "description": "",
       "visible": true, "name": "Housing / Building",
       "image_url": "",
       "childs": []
     },
     {
+      "description": "",
       "visible": true, "name": "Everyday Utility",
       "image_url": "",
       "childs": []
     },
     {
+      "description": "",
       "visible": true, "name": "Weather",
       "image_url": "",
       "childs": []

@@ -9,6 +9,7 @@
 package com.verma.android.dashboard.sample;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -101,7 +102,8 @@ public class MainActivity extends AppCompatActivity {
     DashboardClickListener dashboardClickListener = (v, dashBoardItem) -> {
         if(dashBoardItem.getChilds() != null){
             Toast.makeText(this,dashBoardItem.getName(),Toast.LENGTH_LONG).show();
-            Timber.tag(TAG).d("onClick: %s", dashBoardItem.getChilds().toString());
+            Timber.tag(TAG).d("onClick: %s", dashBoardItem.toString());
+            Log.d(TAG, ": onClick: "+ dashBoardItem.toString());
         }
     };
 

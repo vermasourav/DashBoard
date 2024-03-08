@@ -23,12 +23,25 @@ public class DashBoardItem {
     @DrawableRes
     private int image = R.drawable.ic_launcher;
     private int id;
-
     private  String count;
     private final String name;
+    private String description;
     private final String url;
     private List<Child> childs;
 
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("DashBoardItem{");
+        sb.append("image=").append(image);
+        sb.append(", id=").append(id);
+        sb.append(", count='").append(count).append('\'');
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", url='").append(url).append('\'');
+        sb.append(", description='").append(description).append('\'');
+        sb.append(", childs=").append(childs);
+        sb.append('}');
+        return sb.toString();
+    }
 
     private DashBoardItem(DashBoardItemBuilder builder) {
         this.name = builder.name;
@@ -37,6 +50,7 @@ public class DashBoardItem {
         this.childs = builder.childs;
         this.id = builder.id;
         this.count = builder.count;
+        this.description = builder.description;
     }
 
     @BindingAdapter({"android:src"})
@@ -73,6 +87,7 @@ public class DashBoardItem {
         private String count;
         private String url;
         private String name;
+        private String description;
         private int image;
         private boolean visible;
         private List<Child> childs= new ArrayList<>();
@@ -83,6 +98,11 @@ public class DashBoardItem {
 
         public DashBoardItemBuilder setName(String name) {
             this.name = name;
+            return this;
+        }
+
+        public DashBoardItemBuilder setDescription(String description) {
+            this.description = description;
             return this;
         }
 
