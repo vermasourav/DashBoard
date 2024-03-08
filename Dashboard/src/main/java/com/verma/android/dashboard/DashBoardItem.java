@@ -62,6 +62,10 @@ public class DashBoardItem {
         return name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public String getUrl() {
         return url;
     }
