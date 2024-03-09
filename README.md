@@ -3,7 +3,7 @@
 ---
 DashBoard
 ---
-```
+
 Add it in your root build.gradle at the end of repositories:
 
 	allprojects {
@@ -17,40 +17,32 @@ Step 2. Add the dependency
 	dependencies {
 	        implementation 'com.github.vermasourav:DashBoard:1.0.11'
 	}
-
-
----
-  implementation 'com.github.vermasourav:DashBoard:1.0.11'
----
-
-```
-
 ---
 <h2>XML Code</h2>
----
-```
-    <ScrollView
+
+<ScrollView
     android:id="@+id/scrollable"
     android:layout_width="fill_parent"
     android:layout_height="match_parent">
-    
-        <GridLayout
-            android:id="@+id/dash_board_grid"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:alignmentMode="alignMargins"
-            android:columnCount="2"
-            android:horizontalSpacing="8dp"
-            android:footerDividersEnabled="false"
-            android:columnOrderPreserved="false"
-            android:padding="8dp" />
-    </ScrollView>
-```
+
+    <GridLayout
+        android:id="@+id/dash_board_grid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alignmentMode="alignMargins"
+        android:columnCount="2"
+        android:horizontalSpacing="8dp"
+        android:footerDividersEnabled="false"
+        android:columnOrderPreserved="false"
+        android:padding="8dp" />
+</ScrollView>
 
 ---
+
 <h2>Android Code</h2>
+
 ---
-```
+
      public void setupDashboard() {
         setupGrid();
         DashBoardManager dashBoardManager = new DashBoardManager();
@@ -83,15 +75,12 @@ Step 2. Add the dependency
         }
         binding.dashBoardGrid.setColumnCount(spanCount);
     }
-    
-```
 ---
-Json File at asserts 
+Json File at asserts
 ---
 
+File Name : content_dashboard.json
 ```
-content_dashboard.json
-
 {
     "display_count": true,
     "groups": [
@@ -119,48 +108,44 @@ content_dashboard.json
   ]
 }
 ```
----
-XML Code 
----    
     <com.verma.android.dashboard.expendview.CustomExpandableListView
-            android:id="@+id/expandable_listview"
-            android:layout_width="wrap_content"
-            android:layout_height="300dp"
-            android:childDivider="@android:color/holo_red_dark"
-            android:divider="#000000"
-            android:dividerHeight="0dp"
-            app:withChildArrow="true"
-            app:withImage= "true"
-            app:withSorting="false"
-            app:childMode="listMode"
-            tools:listitem="@layout/expended_view_childs">
-        </com.verma.android.dashboard.expendview.CustomExpandableListView>
-
+        android:id="@+id/expandable_listview"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:childDivider="@android:color/holo_red_dark"
+        android:divider="#000000"
+        android:dividerHeight="0dp"
+        app:withChildArrow="true"
+        app:withImage= "true"
+        app:withSorting="false"
+        app:childMode="listMode"
+        tools:listitem="@layout/expended_view_childs">
+    </com.verma.android.dashboard.expendview.CustomExpandableListView>
 
 ---
 Expended List
 ---
-
-    private void intExpendedList() {
-        binding.expandableListview.isWithImage(false);
-        binding.expandableListview.isWithSorting(false);
-        binding.expandableListview.isWithChildArrow(true);
-        binding.expandableListview.withChildMode(1);
-
-        binding.expandableListview.setGroupClickListener((group, groupPos) -> {
-            binding.expandableListview.getGroups().get(groupPos);
-            Timber.tag(TAG).d("You clicked : %s", group.getName());
-        });
-
-        binding.expandableListview.setChildClickListener((child, groupPos, childPos, header) -> {
-            Timber.tag(TAG).d("You clicked : %s", child.getChildName());
-        });
-
-        DashBoardManager dashBoardManager = new DashBoardManager();
-        ArrayList<DashBoardItem> dashBoardItems = dashBoardManager.getDashBoardItems(this,"content_dashboard.json");
-        binding.expandableListview.doUpdate(dashBoardItems);
-
-       // test();
-    }
-
+```
+ private void intExpendedList() {
+	binding.expandableListview.isWithImage(false);
+	binding.expandableListview.isWithSorting(false);
+	binding.expandableListview.isWithChildArrow(true);
+	binding.expandableListview.withChildMode(1);
+	
+	binding.expandableListview.setGroupClickListener((group, groupPos) -> {
+	    binding.expandableListview.getGroups().get(groupPos);
+	    Timber.tag(TAG).d("You clicked : %s", group.getName());
+	});
+	
+	binding.expandableListview.setChildClickListener((child, groupPos, childPos, header) -> {
+	    Timber.tag(TAG).d("You clicked : %s", child.getChildName());
+	});
+	
+	DashBoardManager dashBoardManager = new DashBoardManager();
+	ArrayList<DashBoardItem> dashBoardItems = dashBoardManager.getDashBoardItems(this,"content_dashboard.json");
+	binding.expandableListview.doUpdate(dashBoardItems);
+	
+	// test();
+}
+```    
 ---
