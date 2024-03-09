@@ -4,7 +4,6 @@
 DashBoard
 ---
 
-
 Add it in your root build.gradle at the end of repositories:
 
 	allprojects {
@@ -18,14 +17,9 @@ Step 2. Add the dependency
 	dependencies {
 	        implementation 'com.github.vermasourav:DashBoard:1.0.11'
 	}
-
-
 ---
-  implementation 'com.github.vermasourav:DashBoard:1.0.11'
----
-
 <h2>XML Code</h2>
----
+
 <ScrollView
     android:id="@+id/scrollable"
     android:layout_width="fill_parent"
@@ -82,13 +76,11 @@ Step 2. Add the dependency
         binding.dashBoardGrid.setColumnCount(spanCount);
     }
 ---
-
-Json File at asserts 
-
+Json File at asserts
 ---
-```
-content_dashboard.json
 
+File Name : content_dashboard.json
+```
 {
     "display_count": true,
     "groups": [
@@ -131,32 +123,29 @@ content_dashboard.json
     </com.verma.android.dashboard.expendview.CustomExpandableListView>
 
 ---
-
 Expended List
-
 ---
-
-    private void intExpendedList() {
-        binding.expandableListview.isWithImage(false);
-        binding.expandableListview.isWithSorting(false);
-        binding.expandableListview.isWithChildArrow(true);
-        binding.expandableListview.withChildMode(1);
-
-        binding.expandableListview.setGroupClickListener((group, groupPos) -> {
-            binding.expandableListview.getGroups().get(groupPos);
-            Timber.tag(TAG).d("You clicked : %s", group.getName());
-        });
-
-        binding.expandableListview.setChildClickListener((child, groupPos, childPos, header) -> {
-            Timber.tag(TAG).d("You clicked : %s", child.getChildName());
-        });
-
-        DashBoardManager dashBoardManager = new DashBoardManager();
-        ArrayList<DashBoardItem> dashBoardItems = dashBoardManager.getDashBoardItems(this,"content_dashboard.json");
-        binding.expandableListview.doUpdate(dashBoardItems);
-
-       // test();
-    }
-
-
+```
+ private void intExpendedList() {
+	binding.expandableListview.isWithImage(false);
+	binding.expandableListview.isWithSorting(false);
+	binding.expandableListview.isWithChildArrow(true);
+	binding.expandableListview.withChildMode(1);
+	
+	binding.expandableListview.setGroupClickListener((group, groupPos) -> {
+	    binding.expandableListview.getGroups().get(groupPos);
+	    Timber.tag(TAG).d("You clicked : %s", group.getName());
+	});
+	
+	binding.expandableListview.setChildClickListener((child, groupPos, childPos, header) -> {
+	    Timber.tag(TAG).d("You clicked : %s", child.getChildName());
+	});
+	
+	DashBoardManager dashBoardManager = new DashBoardManager();
+	ArrayList<DashBoardItem> dashBoardItems = dashBoardManager.getDashBoardItems(this,"content_dashboard.json");
+	binding.expandableListview.doUpdate(dashBoardItems);
+	
+	// test();
+}
+```    
 ---
