@@ -1,112 +1,108 @@
-# DashBoard
 
----
-DashBoard
----
+# DashBoard Library
 
-Add it in your root build.gradle at the end of repositories:
+DashBoard is an Android library designed to create customizable dashboards with expandable lists and grid layouts.
 
-	allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
-Step 2. Add the dependency
+## Installation
 
-	dependencies {
-	        implementation 'com.github.vermasourav:DashBoard:1.0.11'
-	}
----
-<h2>XML Code</h2>
+Add the JitPack repository to your root `build.gradle`:
 
-<ScrollView
-    android:id="@+id/scrollable"
-    android:layout_width="fill_parent"
-    android:layout_height="match_parent">
-
-    <GridLayout
-        android:id="@+id/dash_board_grid"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:alignmentMode="alignMargins"
-        android:columnCount="2"
-        android:horizontalSpacing="8dp"
-        android:footerDividersEnabled="false"
-        android:columnOrderPreserved="false"
-        android:padding="8dp" />
-</ScrollView>
-
----
-
-<h2>Android Code</h2>
-
----
-
-     public void setupDashboard() {
-        setupGrid();
-        DashBoardManager dashBoardManager = new DashBoardManager();
-        ArrayList<DashBoardItem> dashBoardItems = dashBoardManager.getDashBoardItems(getContext(),"content_dashboard.json");
-        Collections.sort(dashBoardItems, Comparator.comparing(o -> o.getName().toLowerCase()));
-        dashBoardManager.setupDashboard(getContext(),binding.dashBoardGrid,3,dashBoardItems,dashboardClickListener);
-
+```groovy
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
     }
-    DashboardClickListener dashboardClickListener = (v, dashBoardItem) -> {
-        if(dashBoardItem.getChilds() != null){
-            Timber.tag(TAG).d("onClick: %s", dashBoardItem.getChilds().toString());
-            Menu00FragmentDirections.ActionNavHomeToNavOne action = Menu00FragmentDirections.actionNavHomeToNavOne();
-                action.setHEADER(dashBoardItem.getName());
-                action.setCHILDS(new Gson().toJson(dashBoardItem.getChilds()));
-
-
-            Navigation.findNavController(v).navigate((NavDirections) action);
-
-
-        }
-    };
-
-    private void setupGrid() {
-        int orientation = getResources().getConfiguration().orientation;
-        int spanCount;
-        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
-            spanCount = 3;
-        } else {
-            spanCount = 4;
-        }
-        binding.dashBoardGrid.setColumnCount(spanCount);
-    }
----
-Json File at asserts
----
-
-File Name : content_dashboard.json
+}
 ```
+
+Add the dependency in your app's `build.gradle`:
+
+```groovy
+dependencies {
+    implementation 'com.github.vermasourav:DashBoard:1.0.11'
+}
+```
+
+## Usage
+
+### XML Layout
+Add a `GridLayout` in your XML file:
+
+```xml
+<GridLayout
+    android:id="@+id/dash_board_grid"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:columnCount="2"
+    android:padding="8dp"/>
+```
+
+### Java Code
+Configure the dashboard in your activity or fragment:
+
+```java
+public void setupDashboard() {
+    setupGrid();
+    DashBoardManager dashBoardManager = new DashBoardManager();
+    ArrayList<DashBoardItem> dashBoardItems = dashBoardManager.getDashBoardItems(getContext(), "content_dashboard.json");
+    Collections.sort(dashBoardItems, Comparator.comparing(o -> o.getName().toLowerCase()));
+    dashBoardManager.setupDashboard(getContext(), binding.dashBoardGrid, 3, dashBoardItems, dashboardClickListener);
+}
+
+DashboardClickListener dashboardClickListener = (v, dashBoardItem) -> {
+    if (dashBoardItem.getChilds() != null) {
+		Timber.tag(TAG).d("onClick: %s", dashBoardItem.getChilds().toString());
+		Menu00FragmentDirections.ActionNavHomeToNavOne action = Menu00FragmentDirections.actionNavHomeToNavOne();
+        action.setHEADER(dashBoardItem.getName());
+        action.setCHILDS(new Gson().toJson(dashBoardItem.getChilds()));
+        Navigation.findNavController(v).navigate(action);
+    }
+};
+
+private void setupGrid() {
+    int orientation = getResources().getConfiguration().orientation;
+    int spanCount = (orientation == Configuration.ORIENTATION_PORTRAIT) ? 3 : 4;
+    binding.dashBoardGrid.setColumnCount(spanCount);
+}
+```
+
+### JSON Configuration
+Define dashboard items in `content_dashboard.json` in the `assets` folder:
+
+```json
 {
     "display_count": true,
     "groups": [
-    {
-     "description": "description Date and Time",
-      "visible": true,  "name": "Date and Time",
-      "image_url": "https://toppng.com/uploads/preview/time-and-date-icon-11549792838b97dvthvmd.png",
-      "childs": [
         {
-          "visible": true, "name": "Internet",
-          "image_url": "",
-          "childs": []
-    },
-    {
-      "description": "description Date and Time",
-      "visible": true, "name": "Engineering Unit",
-      "image_url": "",
-      "childs": [
-        {"visible": true, "id": 1300, "name": "A","description":  "This is A1 description", "thumbnail": ""},
-        {"visible": true, "id": 13001, "name": "Temperature"},
-        {"visible": true, "id": 13002, "name": "Angle"},
-        {"visible": true, "id": 13002, "name": "Moment Of Force / Torque"}
-      ]
-    }
-  ]
+            "description": "Description of Date and Time",
+            "visible": true,
+            "name": "Date and Time",
+            "image_url": "https://example.com/image.png",
+            "childs": [
+                {
+                    "visible": true,
+                    "name": "Internet",
+                    "image_url": "",
+                    "childs": []
+                },
+                {
+                    "description": "Description of Engineering Unit",
+                    "visible": true,
+                    "name": "Engineering Unit",
+                    "image_url": "",
+                    "childs": [
+                        {"visible": true, "id": 1300, "name": "A", "description": "Description of A", "thumbnail": ""},
+                        {"visible": true, "id": 13001, "name": "Temperature"},
+                        {"visible": true, "id": 13002, "name": "Angle"},
+                        {"visible": true, "id": 13002, "name": "Torque"}
+                    ]
+                }
+            ]
+        }
+    ]
 }
+```
+
 ```
     <com.verma.android.dashboard.expendview.CustomExpandableListView
         android:id="@+id/expandable_listview"
@@ -149,3 +145,5 @@ Expended List
 }
 ```    
 ---
+
+For more details, visit the [GitHub repository](https://github.com/vermasourav/DashBoard).
