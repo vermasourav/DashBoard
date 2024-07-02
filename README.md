@@ -103,7 +103,11 @@ Define dashboard items in `content_dashboard.json` in the `assets` folder:
 }
 ```
 
-```
+# Expended List Library
+
+### XML Configuration
+
+```xml
     <com.verma.android.dashboard.expendview.CustomExpandableListView
         android:id="@+id/expandable_listview"
         android:layout_width="wrap_content"
@@ -117,33 +121,32 @@ Define dashboard items in `content_dashboard.json` in the `assets` folder:
         app:childMode="listMode"
         tools:listitem="@layout/expended_view_childs">
     </com.verma.android.dashboard.expendview.CustomExpandableListView>
-
----
-Expended List
----
 ```
- private void intExpendedList() {
-	binding.expandableListview.isWithImage(false);
-	binding.expandableListview.isWithSorting(false);
-	binding.expandableListview.isWithChildArrow(true);
-	binding.expandableListview.withChildMode(1);
-	
-	binding.expandableListview.setGroupClickListener((group, groupPos) -> {
-	    binding.expandableListview.getGroups().get(groupPos);
-	    Timber.tag(TAG).d("You clicked : %s", group.getName());
-	});
-	
-	binding.expandableListview.setChildClickListener((child, groupPos, childPos, header) -> {
-	    Timber.tag(TAG).d("You clicked : %s", child.getChildName());
-	});
-	
-	DashBoardManager dashBoardManager = new DashBoardManager();
-	ArrayList<DashBoardItem> dashBoardItems = dashBoardManager.getDashBoardItems(this,"content_dashboard.json");
-	binding.expandableListview.doUpdate(dashBoardItems);
-	
-	// test();
-}
-```    
----
+
+
+```java
+	private void intExpendedList() {
+		binding.expandableListview.isWithImage(false);
+		binding.expandableListview.isWithSorting(false);
+		binding.expandableListview.isWithChildArrow(true);
+		binding.expandableListview.withChildMode(1);
+		
+		binding.expandableListview.setGroupClickListener((group, groupPos) -> {
+			binding.expandableListview.getGroups().get(groupPos);
+			Timber.tag(TAG).d("You clicked : %s", group.getName());
+		});
+		
+		binding.expandableListview.setChildClickListener((child, groupPos, childPos, header) -> {
+			Timber.tag(TAG).d("You clicked : %s", child.getChildName());
+		});
+		
+		DashBoardManager dashBoardManager = new DashBoardManager();
+		ArrayList<DashBoardItem> dashBoardItems = dashBoardManager.getDashBoardItems(this,"content_dashboard.json");
+		binding.expandableListview.doUpdate(dashBoardItems);
+		
+		// test();
+	}
+```
+
 
 For more details, visit the [GitHub repository](https://github.com/vermasourav/DashBoard).
