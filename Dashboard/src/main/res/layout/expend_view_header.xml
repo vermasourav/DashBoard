@@ -27,12 +27,12 @@
             android:layout_marginLeft="6dp"
             android:drawablePadding="10dp"
             android:padding="10dp"
-            android:maxLines="2"
+            android:maxLines="@integer/expended_list_title_max_line"
             android:ellipsize="end"
-            android:textSize="18sp"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="@tools:sample/full_names" />
+            tools:text="@tools:sample/lorem/random" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </RelativeLayout>

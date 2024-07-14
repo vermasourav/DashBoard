@@ -6,88 +6,103 @@
   ~ Last modified:  07/03/24, 10:09 pm
   ~ Location: Bangalore, India
   -->
-
-<androidx.appcompat.widget.LinearLayoutCompat
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:maxHeight="500dp"
+    android:layout_margin="8dp"
+    xmlns:tools="http://schemas.android.com/tools"
     android:paddingTop="@dimen/dashboard_expandable_padding_top"
-    android:paddingBottom="@dimen/dashboard_expandable_padding_bottom"
-    android:layout_height="wrap_content">
+    android:paddingBottom="@dimen/dashboard_expandable_padding_bottom">
 
+    <!--  Thumbnail -->
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/ll_thumbnail"
         android:layout_marginStart="5dp"
         android:layout_marginBottom="2dp"
-        android:orientation="horizontal">
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
 
         <View
             android:layout_width="2dp"
             android:layout_height="match_parent"
             android:background="@android:color/holo_blue_dark" />
 
-        <!--  Thumbnail -->
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/ll_thumbnail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/thumbnail"
-                android:layout_width="@android:dimen/notification_large_icon_width"
-                android:layout_height="@android:dimen/notification_large_icon_height"
-                android:layout_marginStart="5dp"
-                android:visibility="gone"
-                tools:src="@tools:sample/avatars"
-                tools:visibility="visible" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <!--  Container -->
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/details_container"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="5dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/child"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:maxLines="5"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:typeface="sans"
-                android:visibility="visible"
-                tools:text="@tools:sample/full_names"
-                tools:visibility="visible" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:maxLines="5"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:visibility="gone"
-                tools:text="@tools:sample/full_names"
-                tools:visibility="visible" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <!--  Next Thumbnail -->
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/next_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:src="@drawable/ic_navigate_next"
-            android:tint="@color/dashboard_expandable_app_icon" />
-
+            android:id="@+id/thumbnail"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            tools:src="@tools:sample/avatars"
+            android:src="@drawable/no_image"
+            tools:visibility="visible"
+            android:scaleType="centerCrop"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="4dp"
+            android:elevation="2dp" />
     </androidx.appcompat.widget.LinearLayoutCompat>
-</androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <!--  Container -->
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/details_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_toEndOf="@id/ll_thumbnail"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/child"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="@integer/expended_list_child_title_max_line"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:typeface="sans"
+            android:visibility="visible"
+            tools:text="@tools:sample/lorem/random"
+            tools:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="@integer/expended_list_child_description_max_line"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="14sp"
+            android:visibility="gone"
+            tools:text="@tools:sample/lorem/random"
+            tools:visibility="visible" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <!-- Next Screen Icon -->
+
+    <!--  Next Thumbnail -->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/next_image"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/ic_navigate_next"
+        android:tint="@color/dashboard_expandable_app_icon" />
+</RelativeLayout>

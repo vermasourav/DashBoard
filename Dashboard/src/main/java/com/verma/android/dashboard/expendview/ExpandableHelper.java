@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExpandableHelper {
-    ExpandableListAdapter adapter;
+    public  ExpandableListAdapter adapter;
     private List<DashBoardItem> listGroup = null;
     private ExpandableListener listener;
     private ExpandableGroupListener groupListener;

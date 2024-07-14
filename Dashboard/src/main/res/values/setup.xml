@@ -13,5 +13,8 @@
     <dimen name="dashboard_image_max_height">64dp</dimen>
     <dimen name="dashboard_image_max_width">64dp</dimen>
 
+    <integer name="expended_list_title_max_line">1</integer>
+    <integer name="expended_list_child_title_max_line">2</integer>
+    <integer name="expended_list_child_description_max_line">3</integer>
 
 </resources>

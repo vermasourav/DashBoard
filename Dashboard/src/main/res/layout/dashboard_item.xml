@@ -78,8 +78,8 @@
                     android:maxWidth="@dimen/dashboard_image_max_width"
                     android:visibility="visible"
                     android:scaleType="centerInside"
-                    tools:src="@drawable/ic_launcher"
-                    android:src="@{item.image, default=@drawable/ic_launcher}"
+                    tools:src="@drawable/no_image"
+                    android:src="@{item.image, default=@drawable/no_image}"
                     />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -92,7 +92,7 @@
                     tools:text="@tools:sample/lorem/random"
                     android:layout_marginTop="8dp"
                     android:maxLines="3"
-                    tools:textColor="@android:color/red"
+                    tools:textColor="@android:color/black"
                     android:textColor="@color/dashboard_text_color"
                     />
             </androidx.appcompat.widget.LinearLayoutCompat>

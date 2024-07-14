@@ -6,8 +6,8 @@
       "visible": true,  "name": "A",
       "image_url": "ic_launcher",
       "childs": [
-        {"visible": true, "id": 13001, "name": "A 3", "description":  "This is A3 description", "thumbnail": "https://avatars.githubusercontent.com/u/19544802"},
-        {"visible": true, "id": 13002, "name": "A " ,  "description": "This is A1 description", "thumbnail": ""},
+        {"visible": true, "id": 13001, "name": "A 3", "description":  "This is A3 description", "thumbnail": "https://cdn-icons-png.flaticon.com/512/566/566245.png"},
+        {"visible": true, "id": 13002, "name": "A 1" ,  "description": "This is A1 description", "thumbnail": ""},
         {"visible": true, "id": 13004, "name": "A 4", "description":  "This is A4 description", "thumbnail": ""},
         {"visible": true, "id": 13009, "name": "A 2", "description":  "This is A2 description", "thumbnail": ""}
       ]

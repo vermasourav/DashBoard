@@ -153,7 +153,7 @@ public class DashBoardManager {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
                         Timber.tag(TAG).d("onLoadFailed: Error loading image");
-                        pImageView.setImageResource(android.R.drawable.btn_dialog);
+                        pImageView.setImageResource(R.drawable.no_image);
                         pImageView.setVisibility(View.GONE);
                         return false; // important to return false so the error placeholder can be placed
                     }

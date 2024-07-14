@@ -12,10 +12,9 @@
         <attr name="withImage" format="boolean" />
         <attr name="withSorting" format="boolean" />
         <attr name="withChildArrow" format="boolean" />
-        <attr name="childMode">
-            <enum name="listMode" value="0"/>
-            <enum name="normal" value="1"/>
-            <enum name="tabMode" value="2"/>
+        <attr name="childMode" format="integer">
+            <enum name="listMode" value="0" />
+            <enum name="tabMode" value="1" />
         </attr>
     </declare-styleable>
 

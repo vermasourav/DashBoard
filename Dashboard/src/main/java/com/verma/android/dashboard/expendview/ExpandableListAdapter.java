@@ -19,8 +19,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.verma.android.dashboard.DashBoardItem;
 import com.verma.android.dashboard.R;
+import com.verma.android.dashboard.databinding.CarouselItemBinding;
 import com.verma.android.dashboard.databinding.ExpendViewHeaderBinding;
 import com.verma.android.dashboard.databinding.ExpendedViewChildsBinding;
 import com.verma.android.dashboard.pojo.Child;
@@ -83,7 +85,7 @@ class ExpandableListAdapter extends BaseExpandableListAdapter {
         // Inflating child layout and setting textview
         LayoutInflater inflater = LayoutInflater.from(context);
 
-        if(childType == 0) {
+        if(0 == childType) {
             ExpendedViewChildsBinding binding = ExpendedViewChildsBinding.inflate(inflater, parent, false);
             setChildName(child, binding.child);
 
@@ -115,13 +117,14 @@ class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     private void setChildImage(Child child, ImageView thumbnail) {
         if (withImage) {
+            thumbnail.setVisibility(View.VISIBLE);
+            thumbnail.setImageResource(R.drawable.no_image);
             if (!TextUtils.isEmpty(child.getThumbnail())) {
-                thumbnail.setVisibility(View.VISIBLE);
                 Glide.with(context)
                         .load(child.getThumbnail())
                         .centerCrop()
-                        .override(android.R.dimen.notification_large_icon_width, android.R.dimen.notification_large_icon_height)
-                        .error(android.R.drawable.ic_input_get)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .error(R.drawable.no_image)
                         .into(thumbnail);
             } else {
                 thumbnail.setVisibility(View.GONE);

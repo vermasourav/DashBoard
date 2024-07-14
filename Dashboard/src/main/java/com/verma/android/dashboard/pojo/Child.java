@@ -89,7 +89,7 @@ public class Child implements Serializable {
     }
 
     public String getThumbnail() {
-        return "";
+        return thumbnail;
     }
 
     public String getDescription() {

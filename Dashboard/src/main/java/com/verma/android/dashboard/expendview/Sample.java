@@ -10,7 +10,6 @@ package com.verma.android.dashboard.expendview;
 
 import com.verma.android.dashboard.DashBoardItem;
 import com.verma.android.dashboard.pojo.Child;
-import com.verma.android.dashboard.pojo.Group;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,14 +37,12 @@ class Sample {
         for (int i = 0; i < childCount; i++) {
             childList.add(getChild());
         }
-        DashBoardItem item =
-                new DashBoardItem.DashBoardItemBuilder()
+        return new DashBoardItem.DashBoardItemBuilder()
                         .setURL("https://picsum.photos/200/300?random="+generateRandomId(1,50))
                         .setName(generateRandomName())
                         .setVisible(true)
                         .setChilds(childList)
                         .build();
-        return item;
 
     }
 
@@ -59,7 +56,7 @@ class Sample {
     }
 
     private String generateRandomName() {
-        return generateRandomName(15);
+        return generateRandomName(60);
     }
 
     public boolean generateRandomBoolean() {
@@ -78,8 +75,9 @@ class Sample {
             int index = random.nextInt(alphaNumeric.length());
             char randomChar = alphaNumeric.charAt(index);
             sb.append(randomChar);
-            if(i % 20 == 1){
+            if(i % 6 == 1){
                 sb.append(space);
+                i++;
             }
         }
         return sb.toString();

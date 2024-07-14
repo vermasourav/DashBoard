@@ -1,8 +1,8 @@
 /*
- * Created by: V3RMA SOURAV on 07/03/24, 11:53 pm
- * Copyright © 2023 All rights reserved
+ * Created by: V3RMA SOURAV on 11/07/24, 10:21 pm
+ * Copyright © 2024 All rights reserved
  * Class name : MainActivity
- * Last modified:  07/03/24, 11:46 pm
+ * Last modified:  10/07/24, 2:02 am
  * Location: Bangalore, India
  */
 
@@ -11,6 +11,7 @@ package com.verma.android.dashboard.sample;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,6 +33,13 @@ import timber.log.Timber;
 public class MainActivity extends AppCompatActivity {
     private  final String TAG = getClass().getSimpleName();
     public ActivityMainBinding binding;
+
+    String sampleList[] = {
+            "Dashboard",
+            "Expended List A",
+            "Expended List B" };
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,31 +63,54 @@ public class MainActivity extends AppCompatActivity {
 
     private void intExpendedList() {
         //SETUP With Code
-        binding.expandableListview.isWithImage(false);
+        View dashboardView = binding.dashboard.getRoot();
+
+        dashboardView.setVisibility(View.VISIBLE);
+        binding.expandableListview.setVisibility(View.GONE);
+
+        ArrayAdapter<String> arr;
+        arr = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, sampleList);
+        binding.list.setAdapter(arr);
+
+        binding.list.setOnItemClickListener((parent, view, position, id) -> {
+            if(0 == position){
+                dashboardView.setVisibility(View.VISIBLE);
+                binding.expandableListview.setVisibility(View.GONE);
+            }else if(1 == position){
+                dashboardView.setVisibility(View.GONE);
+                binding.expandableListview.setVisibility(View.VISIBLE);
+            }
+        });
+
+       /* binding.expandableListview.isWithImage(true);
         binding.expandableListview.isWithSorting(false);
         binding.expandableListview.isWithChildArrow(true);
-        binding.expandableListview.withChildMode(1);
+        binding.expandableListview.withChildMode(0);*/
+
 
         binding.expandableListview.setGroupClickListener((group, groupPos) -> {
             binding.expandableListview.getGroups().get(groupPos);
+            Log.d(TAG, "Group Clicked: You clicked : "+  group.getName());
             Timber.tag(TAG).d("You clicked : %s", group.getName());
         });
 
         binding.expandableListview.setChildClickListener((child, groupPos, childPos, header) -> {
             Timber.tag(TAG).d("You clicked : %s", child.getChildName());
+            Log.d(TAG, "Child Clicked: You clicked : " +"["  +groupPos +","+childPos+"] " +  child.getChildName() );
+
         });
 
         DashBoardManager dashBoardManager = new DashBoardManager();
         ArrayList<DashBoardItem> dashBoardItems = dashBoardManager.getDashBoardItems(this,"content_dashboard.json");
         binding.expandableListview.doUpdate(dashBoardItems);
 
-       // test();
+        sample();
     }
 
-    private void test() {
+    private void sample() {
         List<DashBoardItem> groupList = new ArrayList<>();
         List<Child> childListList = new ArrayList<>();
-        childListList.add(new Child().withName("A - 1").withDescription("A - 1 Description"));
+        childListList.add(new Child().withName("A Cancel saving black pixel perfect solid ui icon. Information record mistake. Unsuccessful process. Silhouette symbol on white space. Glyph pictogram for web, mobile. Isolated vector image - 1").withDescription("A - 1 Description").withThumbnail("https://cdn-icons-png.flaticon.com/512/566/566245.png"));
         childListList.add(new Child().withName("A - 2").withDescription("A - 2 Description"));
         childListList.add(new Child().withName("A - 3").withDescription("A - 3 Description"));
 
@@ -91,11 +122,12 @@ public class MainActivity extends AppCompatActivity {
                         .setChilds(childListList)
                         .build();
         groupList.add(item);
+
          binding.expandableListview.doUpdate(groupList);
 
          binding.expandableListview.doUpdateWithSample();
 
-         binding.expandableListview.doUpdate(ExpandableHelper.getSampleGroupList(3));
+         binding.expandableListview.doUpdate(ExpandableHelper.getSampleGroupList(10));
     }
 
 
