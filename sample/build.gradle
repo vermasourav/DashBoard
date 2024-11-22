@@ -4,14 +4,14 @@ plugins {
 
 android {
     namespace 'com.verma.android.dashboard.sample'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         applicationId "com.verma.android.dashboard.sample"
         minSdk 24
-        targetSdk 34
+        targetSdk 35
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.14"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -29,13 +29,14 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 }
 
 dependencies {
-    //implementation 'com.github.vermasourav:DashBoard:1.0.10'
+    //implementation "com.github.vermasourav:DashBoard:1.0.14"
+
     implementation project(path: ':Dashboard')
     implementation 'com.android.support.constraint:constraint-layout:2.0.4'
     implementation 'com.google.android.material:material:1.12.0'

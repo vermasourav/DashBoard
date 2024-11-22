@@ -4,11 +4,11 @@ plugins {
 
 android {
     namespace 'com.verma.android.dashboard'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         minSdk 24
-        targetSdk 34
+        targetSdk 35
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -26,8 +26,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 }
 
@@ -38,7 +38,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     implementation 'com.google.android.material:material:1.12.0'
-    implementation "androidx.navigation:navigation-fragment:2.7.7"
+    implementation "androidx.navigation:navigation-fragment:2.8.4"
     implementation "androidx.navigation:navigation-ui:2.7.7"
     implementation 'com.github.bumptech.glide:glide:4.16.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.15.1'
