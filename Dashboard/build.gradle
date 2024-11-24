@@ -33,21 +33,21 @@ android {
 
 }
 
-/*group = "com.github.vermasourav"
+group = "com.github.vermasourav"
 version = "1.1.15"
 
 afterEvaluate {
     publishing {
         publications {
-            create<MavenPublication>("mavenRelease") {
+           /* create<MavenPublication>("mavenRelease") {
                 from(components["release"]) // Replace with your component name
                 groupId = "com.github.vermasourav" // Replace with your group ID
                 artifactId = "dashboard" // Replace with your artifact ID
                 version = "1.0.15" // Replace with your version
-            }
+            }*/
         }
     }
-}*/
+}
 
 
 dependencies {
