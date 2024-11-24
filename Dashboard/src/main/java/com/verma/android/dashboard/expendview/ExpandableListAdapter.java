@@ -11,6 +11,7 @@ package com.verma.android.dashboard.expendview;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.verma.android.dashboard.DashBoardItem;
+import com.verma.android.dashboard.DashBoardManager;
 import com.verma.android.dashboard.R;
 import com.verma.android.dashboard.databinding.ExpendViewHeaderBinding;
 import com.verma.android.dashboard.databinding.ExpendedViewChildsBinding;
@@ -29,9 +31,7 @@ import com.verma.android.dashboard.pojo.Child;
 import java.util.Comparator;
 import java.util.List;
 
-import timber.log.Timber;
-
-class ExpandableListAdapter extends BaseExpandableListAdapter {
+public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private static final String TAG = "ExpandableListAdapter";
     private final Context context;
     private boolean withSorting = false;
@@ -57,7 +57,7 @@ class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     public void doSorting() {
         if (withSorting) {
-            Timber.tag(TAG).d("doSorting: ");
+            Log.d(TAG, "doSorting: ");
             groups.sort(Comparator.comparing(lhs -> lhs.getName().toLowerCase()));
             groups.forEach(header -> sortingChild(header.getChilds()));
         }

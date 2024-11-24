@@ -10,6 +10,7 @@ package com.verma.android.dashboard;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
 
@@ -18,9 +19,6 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 
 import com.verma.android.dashboard.databinding.DashboardItemBinding;
-
-import timber.log.Timber;
-
 
 public class DashboardView extends FrameLayout {
 
@@ -49,32 +47,43 @@ public class DashboardView extends FrameLayout {
     private void init(Context context) {
         this.context = context;
 
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        //LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         // binding = MyCustomBinding.inflate(inflater, this, true);
-
-
         binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.dashboard_item, this, true);
     }
 
     private void populateCustomValue(AttributeSet attrs) {
         if (null == attrs || null != context) {
-            Timber.tag(TAG).d("populateCustomValue: ");
+            Log.d(TAG, "populateCustomValue: ");
         }
     }
 
-    public void setDashBoardItem(DashBoardItem dashBoardItem, DashboardClickListener dashboardViewClick) {
+    public void setDashBoardItem(DashBoardItem dashBoardItem, Setup setup, DashboardClickListener dashboardViewClick) {
         try{
-            binding.setItem(dashBoardItem);
-            new DashBoardManager().setImage(binding.cardImage,dashBoardItem.getImage(),dashBoardItem.getUrl());
 
-            binding.badgeCount.setVisibility(DashBoardManager.convertCountVisibility(dashBoardItem.getCount()));
+            binding.setItem(dashBoardItem);
+            binding.setSetup(setup);
+
+            Log.d(TAG, "Setup: debugLogs " +setup.isDebugLogs()
+                    +" countDisplay"+setup.isCountDisplay()
+                    +" imageDisplay"+setup.isImageDisplay()
+                    +" discriptionDisplay"+setup.isDiscriptionDisplay());
+            if( setup.isImageDisplay()){
+                new DashBoardManager().setImage(binding.cardImage,dashBoardItem.getImage(),dashBoardItem.getUrl());
+            }else{
+                setUpOnlyText();
+            }
+
+
             binding.dashboardCard.setOnClickListener(view -> {
                 if(null != dashboardViewClick){
                     dashboardViewClick.onClick(binding.dashboardCard,dashBoardItem);
                 }else{
-                    Timber.tag(TAG).d("dashboardViewClick is Null ");
+                    Log.d(TAG, "setDashBoardItem: DashboardViewClick is NULL");
                 }
             });
+
+
         }catch (Exception e){
             //DO Nothing
         }

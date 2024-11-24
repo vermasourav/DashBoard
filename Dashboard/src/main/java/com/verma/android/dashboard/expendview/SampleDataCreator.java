@@ -15,9 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-class Sample {
+class SampleDataCreator {
 
-    private static final String TAG = "Sample";
+    private static final String TAG = "SampleDataCreator";
 
     public List<DashBoardItem> getGroupList(int headerCount, Boolean asListView) {
         List<DashBoardItem> headerList = new ArrayList<>();

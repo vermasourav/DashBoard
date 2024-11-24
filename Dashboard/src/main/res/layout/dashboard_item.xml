@@ -13,10 +13,11 @@
         <import type="android.view.View" />
         <variable name="item" type="com.verma.android.dashboard.DashBoardItem"/>
         <variable name="imageSupport" type="com.verma.android.dashboard.DashBoardManager"/>
+        <variable name="setup" type="com.verma.android.dashboard.Setup"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/dashboardItems"
+        android:id="@+id/dashboard_items"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
@@ -24,38 +25,39 @@
         app:cardBackgroundColor="@color/dashboard_background_color">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/dashboardCard"
+            android:id="@+id/dashboard_card"
             android:minHeight="140dp"
             android:minWidth="250dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:cardBackgroundColor="@color/dashboard_header_divider_color"
             app:cardBackgroundColor="@color/dashboard_background_color"
-            app:cardCornerRadius="8dp"
+            app:cardCornerRadius="10dp"
             app:cardElevation="6dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <FrameLayout
-                android:id="@+id/viewLayout"
+                android:id="@+id/view_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1">
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/badgeCount"
+                    android:id="@+id/badge_count"
                     android:gravity="center"
                     android:textStyle="bold"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:clickable="false"
-                    android:layout_margin="5dp"
+                    android:layout_margin="6dp"
                     android:layout_gravity="top|right"
                     android:background="@drawable/badge_background"
                     android:text="@{item.count}"
                     tools:text="121"
+                    android:visibility="@{item.isCountDisplay(item.count,setup.countDisplay)? View.VISIBLE : View.GONE}"
                     android:textColor="@color/dashboard_text_color"
                     tools:visibility="visible" />
             </FrameLayout>
@@ -69,21 +71,23 @@
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/cardImage"
+                    android:id="@+id/card_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:adjustViewBounds="true"
+                    android:layout_marginTop="6dp"
                     android:maxHeight="@dimen/dashboard_image_max_height"
                     android:maxWidth="@dimen/dashboard_image_max_width"
-                    android:visibility="visible"
                     android:scaleType="centerInside"
+                    tools:visibility="visible"
                     tools:src="@drawable/no_image"
+                    android:visibility="@{setup.imageDisplay ? View.VISIBLE : View.GONE}"
                     android:src="@{item.image, default=@drawable/no_image}"
                     />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/cardName"
+                    android:id="@+id/card_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{item.name}"
@@ -92,7 +96,26 @@
                     tools:text="@tools:sample/lorem/random"
                     android:layout_marginTop="8dp"
                     android:maxLines="3"
+                    android:ellipsize="end"
                     tools:textColor="@android:color/black"
+                    android:textColor="@color/dashboard_text_color"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/card_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{item.description}"
+                    android:gravity="center"
+                    android:ellipsize="end"
+                    android:textAppearance="?android:attr/textAppearanceListItemSecondary"
+                    tools:text="@tools:sample/lorem/random"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:maxLines="3"
+                    android:visibility="@{item.isDescriptiontDisplay(item.description,setup.discriptionDisplay)? View.VISIBLE : View.GONE}"
+
+                    tools:textColor="@android:color/black"
+                    tools:visibility="visible"
                     android:textColor="@color/dashboard_text_color"
                     />
             </androidx.appcompat.widget.LinearLayoutCompat>

@@ -19,7 +19,7 @@ Add the dependency in your app's `build.gradle`:
 
 ```groovy
 dependencies {
-    implementation 'com.github.vermasourav:DashBoard:1.0.11'
+    implementation 'com.github.vermasourav:DashBoard:1.0.14'
 }
 ```
 
@@ -44,6 +44,14 @@ Configure the dashboard in your activity or fragment:
 public void setupDashboard() {
     setupGrid();
     DashBoardManager dashBoardManager = new DashBoardManager();
+
+    Setup setup    = new Setup();
+    setup.setDebugLog(true);
+    setup.setCountDisplay(true);
+    setup.setImageDisplay(true);
+    setup.setIsDiscriptionDisplay(true);
+    dashBoardManager.setSetup(setup);
+    
     ArrayList<DashBoardItem> dashBoardItems = dashBoardManager.getDashBoardItems(getContext(), "content_dashboard.json");
     Collections.sort(dashBoardItems, Comparator.comparing(o -> o.getName().toLowerCase()));
     dashBoardManager.setupDashboard(getContext(), binding.dashBoardGrid, 3, dashBoardItems, dashboardClickListener);
@@ -51,7 +59,9 @@ public void setupDashboard() {
 
 DashboardClickListener dashboardClickListener = (v, dashBoardItem) -> {
     if (dashBoardItem.getChilds() != null) {
-		Timber.tag(TAG).d("onClick: %s", dashBoardItem.getChilds().toString());
+         if(DashBoardManager.isDebugLogs()) {
+             Log.d(TAG, ": onClick: "+ dashBoardItem.getChilds().toString());
+         }
 		Menu00FragmentDirections.ActionNavHomeToNavOne action = Menu00FragmentDirections.actionNavHomeToNavOne();
         action.setHEADER(dashBoardItem.getName());
         action.setCHILDS(new Gson().toJson(dashBoardItem.getChilds()));
@@ -133,11 +143,15 @@ Define dashboard items in `content_dashboard.json` in the `assets` folder:
 		
 		binding.expandableListview.setGroupClickListener((group, groupPos) -> {
 			binding.expandableListview.getGroups().get(groupPos);
-			Timber.tag(TAG).d("You clicked : %s", group.getName());
+            if(DashBoardManager.isDebugLogs()) {
+                Log.d(TAG, ": You clicked :: "+ group.getName());
+            }
 		});
 		
 		binding.expandableListview.setChildClickListener((child, groupPos, childPos, header) -> {
-			Timber.tag(TAG).d("You clicked : %s", child.getChildName());
+            if(DashBoardManager.isDebugLogs()) {
+                Log.d(TAG, ": You clicked :: "+ group.getChildName());
+            }
 		});
 		
 		DashBoardManager dashBoardManager = new DashBoardManager();

@@ -16,7 +16,6 @@ import com.verma.android.dashboard.expendview.listener.ExpandableChildListener;
 import com.verma.android.dashboard.expendview.listener.ExpandableGroupListener;
 import com.verma.android.dashboard.expendview.listener.ExpandableListener;
 import com.verma.android.dashboard.pojo.Child;
-import com.verma.android.dashboard.pojo.Group;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,11 +43,11 @@ public class ExpandableHelper {
     }
 
     public static List<DashBoardItem> getSampleGroupList(int headerCount) {
-        return new Sample().getGroupList(headerCount, null);
+        return new SampleDataCreator().getGroupList(headerCount, null);
     }
 
     public static List<DashBoardItem> getSampleGroupList(Boolean asListView) {
-        Sample sample = new Sample();
+        SampleDataCreator sample = new SampleDataCreator();
         return sample.getGroupList(5, asListView);
     }
 

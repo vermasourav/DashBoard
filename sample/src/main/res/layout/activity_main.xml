@@ -26,6 +26,19 @@
             android:layout_width="match_parent"
             android:layout_height="250dp"/>
 
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_selected_item"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:clickable="false"
+            android:layout_margin="5dp"
+            tools:text="121"
+            android:textColor="@color/dashboard_text_color"
+            tools:visibility="visible" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="10dp"

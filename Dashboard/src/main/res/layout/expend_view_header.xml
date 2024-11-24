@@ -29,7 +29,7 @@
             android:padding="10dp"
             android:maxLines="@integer/expended_list_title_max_line"
             android:ellipsize="end"
-            android:textSize="20sp"
+            android:textAppearance="?android:attr/textAppearanceListItemSmall"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

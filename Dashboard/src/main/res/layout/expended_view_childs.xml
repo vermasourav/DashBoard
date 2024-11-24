@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Created by: V3RMA SOURAV on 07/03/24, 11:53 pm
-  ~ Copyright © 2023 All rights reserved
+  ~ Created by: V3RMA SOURAV on 24/11/24, 8:43pm
+  ~ Copyright ©2024 All rights reserved
   ~ Class name : expended_view_childs.xml
-  ~ Last modified:  07/03/24, 10:09 pm
+  ~ Last modified:  24/11/24, 8:40pm
   ~ Location: Bangalore, India
   -->
 <RelativeLayout
@@ -15,6 +15,7 @@
     android:layout_margin="8dp"
     xmlns:tools="http://schemas.android.com/tools"
     android:paddingTop="@dimen/dashboard_expandable_padding_top"
+    android:paddingLeft="@dimen/dashboard_expandable_padding_left"
     android:paddingBottom="@dimen/dashboard_expandable_padding_bottom">
 
     <!--  Thumbnail -->
@@ -28,10 +29,11 @@
         android:layout_gravity="center">
 
         <View
+            android:visibility="gone"
             android:layout_width="2dp"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:background="@android:color/holo_blue_dark" />
-
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/thumbnail"
             android:layout_width="64dp"
@@ -46,6 +48,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="4dp"
             android:elevation="2dp" />
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 
@@ -59,7 +62,7 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="30dp"
         android:layout_toEndOf="@id/ll_thumbnail"
         android:orientation="vertical">
 
@@ -69,9 +72,9 @@
             android:layout_height="wrap_content"
             android:maxLines="@integer/expended_list_child_title_max_line"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textSize="18sp"
             android:textStyle="bold"
             android:typeface="sans"
+            android:ellipsize="end"
             android:visibility="visible"
             tools:text="@tools:sample/lorem/random"
             tools:visibility="visible" />
@@ -80,12 +83,16 @@
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
+            tools:textColor="@android:color/black"
+            android:textColor="@color/dashboard_text_color"
             android:maxLines="@integer/expended_list_child_description_max_line"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textSize="14sp"
+            android:textAppearance="?android:attr/textAppearanceListItemSecondary"
             android:visibility="gone"
             tools:text="@tools:sample/lorem/random"
+            android:layout_marginBottom="8dp"
             tools:visibility="visible" />
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 

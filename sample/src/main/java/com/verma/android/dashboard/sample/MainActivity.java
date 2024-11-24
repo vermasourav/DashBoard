@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.verma.android.dashboard.Setup;
 import com.verma.android.dashboard.expendview.ExpandableHelper;
 import com.verma.android.dashboard.DashBoardItem;
 import com.verma.android.dashboard.DashboardClickListener;
@@ -27,8 +28,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
-import timber.log.Timber;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
     private  final String TAG = getClass().getSimpleName();
@@ -37,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
     String sampleList[] = {
             "Dashboard",
             "Expended List A",
-            "Expended List B" };
+            "Expended List B"
+    };
 
 
     @Override
@@ -52,7 +53,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void setupDashboard() {
         DashBoardManager dashBoardManager = new DashBoardManager();
-        dashBoardManager.setCountVisiable(true);
+
+        Setup setup    = new Setup();
+        setup.setDebugLog(true);
+        setup.setCountDisplay(true);
+        setup.setImageDisplay(true);
+        setup.setIsDiscriptionDisplay(true);
+        dashBoardManager.setSetup(setup);
 
         View includedLayout =  findViewById(R.id.dashboard);
        // ArrayList<DashBoardItem> dashBoardItems = dashBoardManager.getDashBoardItems(this,"content_dashboard.json", true);
@@ -65,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
         //SETUP With Code
         View dashboardView = binding.dashboard.getRoot();
 
+        binding.textSelectedItem.setText(sampleList[0]);
+
         dashboardView.setVisibility(View.VISIBLE);
         binding.expandableListview.setVisibility(View.GONE);
 
@@ -73,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
         binding.list.setAdapter(arr);
 
         binding.list.setOnItemClickListener((parent, view, position, id) -> {
+            binding.textSelectedItem.setText(sampleList[position]);
+
             if(0 == position){
                 dashboardView.setVisibility(View.VISIBLE);
                 binding.expandableListview.setVisibility(View.GONE);
@@ -90,14 +101,11 @@ public class MainActivity extends AppCompatActivity {
 
         binding.expandableListview.setGroupClickListener((group, groupPos) -> {
             binding.expandableListview.getGroups().get(groupPos);
-            Log.d(TAG, "Group Clicked: You clicked : "+  group.getName());
-            Timber.tag(TAG).d("You clicked : %s", group.getName());
+                Log.d(TAG, "Group Clicked: You clicked : "+  group.getName());
         });
 
         binding.expandableListview.setChildClickListener((child, groupPos, childPos, header) -> {
-            Timber.tag(TAG).d("You clicked : %s", child.getChildName());
             Log.d(TAG, "Child Clicked: You clicked : " +"["  +groupPos +","+childPos+"] " +  child.getChildName() );
-
         });
 
         DashBoardManager dashBoardManager = new DashBoardManager();
@@ -128,13 +136,16 @@ public class MainActivity extends AppCompatActivity {
          binding.expandableListview.doUpdateWithSample();
 
          binding.expandableListview.doUpdate(ExpandableHelper.getSampleGroupList(10));
+
+        ArrayList<DashBoardItem> dashBoardItems = new DashBoardManager().getDashBoardItems(this,"content_dashboard.json");
+        binding.expandableListview.doUpdate(dashBoardItems);
+
     }
 
 
     DashboardClickListener dashboardClickListener = (v, dashBoardItem) -> {
         if(dashBoardItem.getChilds() != null){
             Toast.makeText(this,dashBoardItem.getName(),Toast.LENGTH_LONG).show();
-            Timber.tag(TAG).d("onClick: %s", dashBoardItem.toString());
             Log.d(TAG, ": onClick: "+ dashBoardItem.toString());
         }
     };

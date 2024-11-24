@@ -8,6 +8,9 @@
 
 package com.verma.android.dashboard;
 
+import android.text.TextUtils;
+import android.util.Patterns;
+import android.webkit.URLUtil;
 import android.widget.ImageView;
 
 import androidx.annotation.DrawableRes;
@@ -29,6 +32,23 @@ public class DashBoardItem {
     private final String url;
     private List<Child> childs;
 
+    public boolean isCountDisplay(String text, boolean isAllow){
+        if(isAllow){
+            return !TextUtils.isEmpty(text) && !text.equals("0");
+        }else{
+            return false;
+        }
+    }
+    public boolean isDescriptiontDisplay(String text, boolean isAllow) {
+        if(isAllow){
+            return !TextUtils.isEmpty(text);
+        }else{
+            return false;
+        }
+    }
+
+
+
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("DashBoardItem{");
@@ -38,7 +58,11 @@ public class DashBoardItem {
         sb.append(", name='").append(name).append('\'');
         sb.append(", url='").append(url).append('\'');
         sb.append(", description='").append(description).append('\'');
-        sb.append(", childs=").append(childs);
+        if(null == childs){
+            sb.append(", childs=").append("NULL");
+        }else{
+            sb.append(", childs=").append(childs);
+        }
         sb.append('}');
         return sb.toString();
     }
@@ -136,7 +160,19 @@ public class DashBoardItem {
             return this;
         }
         public DashBoardItem build() {
+            setupLocalImage();
             return new DashBoardItem(this);
+        }
+
+        private void setupLocalImage() {
+            if(!TextUtils.isEmpty(url) && !isValidURL(url)){
+                image = R.drawable.no_image;
+            }
+
+        }
+
+        private boolean isValidURL(String url){
+            return !TextUtils.isEmpty(url) && URLUtil.isValidUrl(url) && Patterns.WEB_URL.matcher(url).matches();
         }
     }
 }

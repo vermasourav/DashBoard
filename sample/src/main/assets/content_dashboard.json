@@ -2,21 +2,44 @@
   "display_count": true,
   "groups": [
     {
-      "description": "",
-      "visible": true,  "name": "A",
-      "image_url": "ic_launcher",
+      "description": "Android OS is a Linux-based mobile operating system that primarily runs on smartphones and tablets. The Android platform includes an operating system based upon the Linux kernel, a GUI, a web browser and end-user applications that can be downloaded.",
+      "visible": true,  "name": "Android Description",
+      "image_url": "https://cdn-icons-png.flaticon.com/512/566/566245.png",
       "childs": [
-        {"visible": true, "id": 13001, "name": "A 3", "description":  "This is A3 description", "thumbnail": "https://cdn-icons-png.flaticon.com/512/566/566245.png"},
-        {"visible": true, "id": 13002, "name": "A 1" ,  "description": "This is A1 description", "thumbnail": ""},
-        {"visible": true, "id": 13004, "name": "A 4", "description":  "This is A4 description", "thumbnail": ""},
-        {"visible": true, "id": 13009, "name": "A 2", "description":  "This is A2 description", "thumbnail": ""}
+        {"visible": true, "id": 11012, "name": "Android 14", "description":  "Build richer camera and media experiences with Ultra HDR, more camera extensions, and lossless USB audio. Simplify sign-in using Credential Manager, and provide health and fitness insights securely using Health Connect. Make your app more expressive and personal with predictive back, per-app languages, grammatical inflection, and more. Deliver engaging, differentiated experiences on large screens.", "thumbnail": ""},
+        {"visible": true, "id": 11013, "name": "Android 15", "description": "Android 15 continues our mission of building a private and secure platform that helps improve your productivity while giving you new capabilities to produce beautiful apps, superior media and camera experiences, and an intuitive user experience, particularly on tablets and foldables.", "thumbnail": ""},
+        {"visible": true, "id": 11014, "name": "Android 16", "description":  "An early look at the next version of Android for testing, development, and feedback. Try it out with your apps and let us know what you think!\n", "thumbnail": ""},
+        {"visible": true, "id": 11001, "name": "Android 13", "description":  "Build for user privacy with photo picker and notification permission. Improve productivity with themed app icons, per-app languages, and clipboard preview. Build for modern standards like Bluetooth LE Audio and MIDI 2.0 over USB. Deliver a better experience on tablets and large screens.", "thumbnail": ""},
+        {"visible": true, "id": 11002, "name": "Android 12" , "description": "A new system UI with Material You that's expressive, dynamic, and personal. Extend your apps with redesigned widgets, AppSearch, Game Mode, and new codecs. Support new protections like privacy dashboard and approximate location. Improve productivity with rich content insertion, easier blurs, improved native debugging, and much more.", "thumbnail": ""},
+        {"visible": true, "id": 11003, "name": "Android 11", "description":  "People-centric and expressive, with a new controls space and more privacy features. Extend your apps with conversation notifications and bubbles, try one-time permissions, surface devices and media in the controls. Work faster with tools like compatibility toggles, ADB incremental installs, and more.", "thumbnail": ""},
+        {"visible": true, "id": 11004, "name": "Android 10", "description":  "Build app experiences with dark theme and gesture navigation. Support new protections for user privacy and security. Extend your apps with high-performance codecs, better biometrics, faster app starts, Vulkan 1.1, NNAPI 1.2, foldables, 5G, and more.", "thumbnail": ""},
+        {"visible": true, "id": 11005, "name": "Android 9 Pie", "description":  "Android 9 harnesses the power of artificial intelligence to give you more from your phone. Now it's smarter, faster and adapts as you use it.", "thumbnail": ""},
+        {"visible": true, "id": 11006, "name": "Android 8 Oreo", "description":  "Smarter, faster, and more powerful than ever. The world's favorite cookie is your new favorite Android release.", "thumbnail": ""},
+        {"visible": true, "id": 11007, "name": "Android 7 Nougat", "description":  "Android 7.0 brings new features for performance, productivity, and security. Test your apps with new system behaviors to save power and memory. Take advantage of multi-window UI, direct reply notifications and more.", "thumbnail": ""},
+        {"visible": true, "id": 11008, "name": "Android 6 Marshmallow", "description":  "Get your apps ready for Android 6.0 Marshmallow! Explore what's new — runtime permissions, Doze and App Standby power-saving features, new assist technology, and more.", "thumbnail": ""},
+        {"visible": true, "id": 11009, "name": "Android 5 Lollipop", "description":  "Packed with new features for users and thousands of new APIs for developers. It extends Android even further, from phones, tablets, and wearables, to TVs and cars.", "thumbnail": ""},
+        {"visible": true, "id": 11010, "name": "Android 4.4 KitKat", "description":  "Android KitKat brings all of Android's most innovative, most beautiful, and most useful features to more devices everywhere.", "thumbnail": ""}
+      ]
+    },
+    {
+      "description": "To know, is to know that you know nothing. That is the meaning of true knowledge.",
+      "visible": true,  "name": "A Quotes",
+      "image_url": "",
+      "childs": [
+        {"visible": true, "id": 13001, "name": "Lao Tzu", "description":  "Kindness in words creates confidence. Kindness in thinking creates profoundness. Kindness in giving creates love.\n\n", "thumbnail": ""},
+        {"visible": true, "id": 13002, "name": "Erich Fromm" , "description": "Greed is a bottomless pit which exhausts the person in an endless effort to satisfy the need without ever reaching satisfaction.", "thumbnail": ""},
+        {"visible": true, "id": 13004, "name": "Ernest Hemingway", "description":  "But man is not made for defeat. A man can be destroyed but not defeated.", "thumbnail": ""},
+        {"visible": true, "id": 13005, "name": "Ploat", "description":  "Opinion is the medium between knowledge and ignorance.", "thumbnail": ""},
+        {"visible": true, "id": 13009, "name": "Calvin Coolidge", "description":  "Knowledge comes, but wisdom lingers. It may not be difficult to store up in the mind a vast quantity of facts within a comparatively short time, but the ability to form judgments requires the severe discipline of hard work and the tempering heat of experience and maturity.", "thumbnail": ""}
       ]
     },
     {
       "description": "",
-      "visible": true,  "name": "This is sample dashboard item name",
+      "visible": true,  "name": "A This is sample dashboard item name",
       "image_url": "ic_launcher",
-      "childs": []
+      "childs": [
+        {"visible": true, "id": 14001, "name": "A 3", "description":  "This is A3 description", "thumbnail": "https://cdn-icons-png.flaticon.com/512/566/566245.png"}
+      ]
     },{
       "description": "",
       "visible": true,  "name": "Sourav",
@@ -50,29 +73,6 @@
     },{
       "description": "",
       "visible": true,  "name": "Sourav Kumar Verma",
-      "image_url": "",
-      "childs": []
-    },{
-      "description": "",
-      "visible": true,  "name": "Date and Time",
-      "image_url": "",
-      "childs": []
-    },
-    {
-      "description": "",
-      "visible": true, "name": "Housing / Building",
-      "image_url": "",
-      "childs": []
-    },
-    {
-      "description": "",
-      "visible": true, "name": "Everyday Utility",
-      "image_url": "",
-      "childs": []
-    },
-    {
-      "description": "",
-      "visible": true, "name": "Weather",
       "image_url": "",
       "childs": []
     }

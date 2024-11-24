@@ -8,6 +8,7 @@
   -->
 
 <resources>
+    <dimen name="dashboard_expandable_padding_left">10dp</dimen>
     <dimen name="dashboard_expandable_padding_top">6dp</dimen>
     <dimen name="dashboard_expandable_padding_bottom">6dp</dimen>
 </resources>

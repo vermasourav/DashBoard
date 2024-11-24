@@ -31,6 +31,10 @@ public class CustomExpandableListView extends ExpandableListView {
                 .withList(null,true)
                 .build();
     }
+    public Context getCustomContext() {
+        return context;
+    }
+
     private void populateCustomValue(AttributeSet attrs) {
         if (null == attrs) {
             return;

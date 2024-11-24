@@ -8,6 +8,8 @@
 
 package com.verma.android.dashboard.pojo;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -58,6 +60,7 @@ public class Child implements Serializable {
     }
 
 
+    @NonNull
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Child{");
