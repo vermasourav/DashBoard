@@ -28,13 +28,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
     private  final String TAG = getClass().getSimpleName();
     public ActivityMainBinding binding;
 
-    String sampleList[] = {
+    String[] sampleList = {
             "Dashboard",
             "Expended List A",
             "Expended List B"
@@ -106,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
         binding.expandableListview.setChildClickListener((child, groupPos, childPos, header) -> {
             Log.d(TAG, "Child Clicked: You clicked : " +"["  +groupPos +","+childPos+"] " +  child.getChildName() );
+            Log.d(TAG, "intExpendedList: ");
         });
 
         DashBoardManager dashBoardManager = new DashBoardManager();
@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
     DashboardClickListener dashboardClickListener = (v, dashBoardItem) -> {
         if(dashBoardItem.getChilds() != null){
             Toast.makeText(this,dashBoardItem.getName(),Toast.LENGTH_LONG).show();
-            Log.d(TAG, ": onClick: "+ dashBoardItem.toString());
+            Log.d(TAG, ": onClick: "+ dashBoardItem);
         }
     };
 

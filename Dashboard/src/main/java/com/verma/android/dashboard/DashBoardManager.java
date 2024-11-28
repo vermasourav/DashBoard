@@ -106,7 +106,7 @@ public class DashBoardManager {
                 DashboardView dashboardView = getDashboardView(pContext, setup,dashboardClickListener, item, lParams);
                 dashBoardGrid.addView(dashboardView );
             }catch (Exception e){
-                e.printStackTrace();
+                Log.d(TAG, "setupDashboard: "+e.getMessage());
             }
         }
 
@@ -211,7 +211,7 @@ public class DashBoardManager {
                 Collections.sort(dashBoardItems, Comparator.comparing(o -> o.getName().toLowerCase()));
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.d(TAG, "getDashBoardItems: "+e.getMessage());
             //DO Nothing
         }
         return dashBoardItems;

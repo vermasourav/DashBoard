@@ -31,6 +31,10 @@ android {
         targetCompatibility JavaVersion.VERSION_17
     }
 
+    lintOptions {
+        disable 'TypographyFractions','TypographyQuotes'
+    }
+
 }
 
 group = "com.github.vermasourav"

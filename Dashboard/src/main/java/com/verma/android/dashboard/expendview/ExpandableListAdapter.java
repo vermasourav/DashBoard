@@ -22,7 +22,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.verma.android.dashboard.DashBoardItem;
-import com.verma.android.dashboard.DashBoardManager;
 import com.verma.android.dashboard.R;
 import com.verma.android.dashboard.databinding.ExpendViewHeaderBinding;
 import com.verma.android.dashboard.databinding.ExpendedViewChildsBinding;
