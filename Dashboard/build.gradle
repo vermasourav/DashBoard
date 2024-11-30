@@ -1,15 +1,15 @@
 plugins {
     id("com.android.library")
-    id("maven-publish")
+    id("org.jetbrains.kotlin.android")
 }
 
 android {
+    compileSdk rootProject.compile_sdk_version
     namespace 'com.verma.android.dashboard'
-    compileSdk 35
 
     defaultConfig {
-        minSdk 24
-        targetSdk 35
+        minSdk rootProject.min_sdk_version
+        targetSdk rootProject.target_sdk_version
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -18,7 +18,10 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            //proguardFile 'proguard-google-play-services.pro'
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            //signingConfig signingConfigs.KEY
+
         }
     }
     buildFeatures {
@@ -30,6 +33,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
 
     lintOptions {
         disable 'TypographyFractions','TypographyQuotes'
@@ -37,24 +43,9 @@ android {
 
 }
 
-/*group = "com.github.vermasourav"
-version = "1.1.15"
-
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("mavenRelease") {
-                from(components["release"]) // Replace with your component name
-                groupId = "com.github.vermasourav" // Replace with your group ID
-                artifactId = "dashboard" // Replace with your artifact ID
-                version = "1.0.15" // Replace with your version
-            }
-        }
-    }
-}*/
-
 
 dependencies {
+    // implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

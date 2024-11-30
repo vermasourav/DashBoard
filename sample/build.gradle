@@ -1,24 +1,22 @@
 plugins {
     id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
 }
+//apply from: rootProject.file('./app/signing.gradle')
 
 android {
     namespace 'com.verma.android.dashboard.sample'
-    compileSdk 35
+    compileSdk rootProject.compile_sdk_version
 
     defaultConfig {
         applicationId "com.verma.android.dashboard.sample"
-        minSdk 24
-        targetSdk 35
-        versionCode 1
-        versionName "1.0.14"
-
+        minSdk rootProject.min_sdk_version
+        targetSdk rootProject.target_sdk_version
+        versionCode rootProject.version_code
+        versionName rootProject.version_name
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
+        //setProperty("archivesBaseName", applicationId + "-v" + versionCode + "(" + versionName + ")")
 
-    buildFeatures {
-        viewBinding = true
-        dataBinding = true
     }
 
 
@@ -32,12 +30,19 @@ android {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
+
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
 }
 
 dependencies {
+    // implementation fileTree(dir: 'libs', include: ['*.aar'])
     //implementation "com.github.vermasourav:DashBoard:1.0.14"
 
     implementation project(path: ':Dashboard')
+
     implementation 'com.android.support.constraint:constraint-layout:2.0.4'
     implementation 'com.google.android.material:material:1.12.0'
     testImplementation 'junit:junit:4.13.2'

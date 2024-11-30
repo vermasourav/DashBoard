@@ -1,0 +1,32 @@
+/*
+ * *
+ *  * Created by SOURAV VERMA on 07/02/22, 1:10 PM
+ *  * Copyright (c) 2022 . All rights reserved.
+ *  * Last modified 31/01/22, 2:17 PM
+ *
+ */
+
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        KEY {
+            if (project.hasProperty('RELEASE_STORE_FILE')) {
+                storeFile file("C:\\Development\\_project\\KEY\\" + RELEASE_STORE_FILE)
+                storePassword RELEASE_STORE_PASSWORD
+                keyAlias RELEASE_KEY_ALIAS
+                keyPassword RELEASE_KEY_PASSWORD
+            } else {
+                throw new GradleException('missing key store variable')
+            }
+        }
+
+    task printKeyStoreInfo {
+            println "RELEASE_STORE_FILE -> " + RELEASE_STORE_FILE
+            println "RELEASE_STORE_PASSWORD -> " + RELEASE_STORE_PASSWORD
+            println "RELEASE_KEY_ALIAS -> " + RELEASE_KEY_ALIAS
+            println "RELEASE_KEY_PASSWORD -> " + RELEASE_KEY_PASSWORD
+        }
+    }
+
+}
