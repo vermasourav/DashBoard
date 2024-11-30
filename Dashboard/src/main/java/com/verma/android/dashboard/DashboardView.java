@@ -64,10 +64,13 @@ public class DashboardView extends FrameLayout {
             binding.setItem(dashBoardItem);
             binding.setSetup(setup);
 
-            Log.d(TAG, "Setup: debugLogs " +setup.isDebugLogs()
-                    +" countDisplay"+setup.isCountDisplay()
-                    +" imageDisplay"+setup.isImageDisplay()
-                    +" discriptionDisplay"+setup.isDiscriptionDisplay());
+            if(setup.debugLogs){
+                Log.d(TAG, "Setup: debugLogs " +setup.isDebugLogs()
+                        +" countDisplay "+setup.isCountDisplay()
+                        +" imageDisplay "+setup.isImageDisplay()
+                        +" discriptionDisplay "+setup.isDiscriptionDisplay());
+            }
+
             if( setup.isImageDisplay()){
                 new DashBoardManager().setImage(binding.cardImage,dashBoardItem.getImage(),dashBoardItem.getUrl());
             }else{
