@@ -140,6 +140,7 @@ public class DashBoardManager {
         GlideUrl glideURL = getGlideUrl(pURL);
         Glide.with(context)
                 .load(glideURL)
+                .override(400, 400)
                 .listener(new RequestListener<Drawable>() {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {

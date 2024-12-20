@@ -54,9 +54,9 @@ public class MainActivity extends AppCompatActivity {
         DashBoardManager dashBoardManager = new DashBoardManager();
 
         Setup setup    = new Setup();
-        setup.setDebugLog(true);
+        setup.setDebugLog(false);
         setup.setCountDisplay(true);
-        setup.setImageDisplay(true);
+        setup.setImageDisplay(false);
         setup.setIsDiscriptionDisplay(true);
         dashBoardManager.setSetup(setup);
 

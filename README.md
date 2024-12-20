@@ -19,7 +19,7 @@ Add the dependency in your app's `build.gradle`:
 
 ```groovy
 dependencies {
-    implementation 'com.github.vermasourav:DashBoard:1.0.14'
+    implementation 'com.github.vermasourav:DashBoard:1.0.16'
 }
 ```
 

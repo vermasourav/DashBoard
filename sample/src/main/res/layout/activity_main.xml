@@ -62,6 +62,7 @@
             android:id="@+id/dashboard"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            tools:listitem="@layout/fragment_dashboard"
             layout="@layout/fragment_dashboard" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
