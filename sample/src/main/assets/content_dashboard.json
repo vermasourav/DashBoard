@@ -35,46 +35,11 @@
     },
     {
       "description": "",
-      "visible": true,  "name": "A This is sample dashboard item name",
+      "visible": true,  "name": "A This is sample long dashboard item name",
       "image_url": "ic_launcher",
       "childs": [
         {"visible": true, "id": 14001, "name": "A 3", "description":  "This is A3 description", "thumbnail": "https://cdn-icons-png.flaticon.com/512/566/566245.png"}
       ]
-    },{
-      "description": "",
-      "visible": true,  "name": "Sourav",
-      "image_url": "https://avatars.githubusercontent.com/u/19544802",
-      "childs": []
-    },{
-      "description": "",
-      "visible": true,  "name": "Sourav",
-      "image_url": "https://avatars.githubusercontent.com/u/19544802",
-      "childs": []
-    },{
-      "description": "",
-      "visible": true,  "name": "Sourav",
-      "image_url": "https://avatars.githubusercontent.com/u/19544802",
-      "childs": []
-    },{
-      "description": "",
-      "visible": true,  "name": "Sourav",
-      "image_url": "https://avatars.githubusercontent.com/u/19544802",
-      "childs": []
-    },{
-      "description": "",
-      "visible": true,  "name": "Sourav",
-      "image_url": "",
-      "childs": []
-    },{
-      "description": "",
-      "visible": true,  "name": "Sourav Kumar",
-      "image_url": "",
-      "childs": []
-    },{
-      "description": "",
-      "visible": true,  "name": "Sourav Kumar Verma",
-      "image_url": "",
-      "childs": []
     }
   ]
 }

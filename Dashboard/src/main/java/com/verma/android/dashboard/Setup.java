@@ -44,7 +44,4 @@ public  class Setup{
         public void setIsDiscriptionDisplay(boolean discriptionDisplay) {
             this.discriptionDisplay = discriptionDisplay;
         }
-
-
-
     }

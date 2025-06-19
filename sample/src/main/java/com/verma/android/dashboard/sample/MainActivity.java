@@ -16,11 +16,17 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.verma.android.dashboard.ImageSlider;
 import com.verma.android.dashboard.Setup;
 import com.verma.android.dashboard.expendview.ExpandableHelper;
 import com.verma.android.dashboard.DashBoardItem;
 import com.verma.android.dashboard.DashboardClickListener;
 import com.verma.android.dashboard.DashBoardManager;
+import com.verma.android.dashboard.imageslider.constants.ActionTypes;
+import com.verma.android.dashboard.imageslider.constants.AnimationTypes;
+import com.verma.android.dashboard.imageslider.constants.ScaleTypes;
+import com.verma.android.dashboard.imageslider.interfaces.ItemClickListener;
+import com.verma.android.dashboard.imageslider.models.SlideModel;
 import com.verma.android.dashboard.pojo.Child;
 import com.verma.android.dashboard.sample.databinding.ActivityMainBinding;
 
@@ -35,8 +41,10 @@ public class MainActivity extends AppCompatActivity {
 
     String[] sampleList = {
             "Dashboard",
-            "Expended List A",
-            "Expended List B"
+            "Expended list",
+            "Expended list with sample data",
+            "Expended list custom",
+            "Slider"
     };
 
 
@@ -45,14 +53,89 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        intExpendedList();
+        intList();
         setupDashboard();
+        intExpendedList();
+        initImageSlider();
+    }
+
+    private void intList() {
+        binding.textSelectedItem.setText(sampleList[0]);
+
+        binding.dashboard.getRoot().setVisibility(View.VISIBLE);
+        binding.expandableListview.setVisibility(View.GONE);
+        binding.imageSlider.setVisibility(View.GONE);
+
+        ArrayAdapter<String> arr;
+        arr = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, sampleList);
+        binding.list.setAdapter(arr);
+
+        binding.list.setOnItemClickListener((parent, view, position, id) -> {
+            binding.textSelectedItem.setText(sampleList[position]);
+            binding.dashboard.getRoot().setVisibility(View.GONE);
+            binding.expandableListview.setVisibility(View.GONE);
+            binding.imageSlider.setVisibility(View.GONE);
+
+            if(0 == position){
+                setupDashboard();
+                binding.dashboard.getRoot().setVisibility(View.VISIBLE);
+            }else if(1 == position){
+                intExpendedList();
+                binding.expandableListview.setVisibility(View.VISIBLE);
+            }else if(2 == position){
+                intExpendedSample();
+                binding.expandableListview.setVisibility(View.VISIBLE);
+            }else if(3 == position){
+                intExpendedSampleCustom();
+                binding.expandableListview.setVisibility(View.VISIBLE);
+            }else if(4 == position){
+                initImageSlider();
+                binding.imageSlider.setVisibility(View.VISIBLE);
+            }
+        });
+
+    }
+
+    private void initImageSlider() {
+        ImageSlider imageSlider = binding.imageSlider;
+        ArrayList<SlideModel> imageList = new ArrayList<>();
+        List<DashBoardItem> dashBoardItemsImage = ExpandableHelper.getSampleGroupList(15);
+        for (DashBoardItem item : dashBoardItemsImage) {
+            SlideModel slideModel = new SlideModel(item.getUrl(), item.getName(), ScaleTypes.CENTER_CROP);
+            slideModel.setImagePath(com.verma.android.dashboard.R.drawable.no_image);
+            imageList.add(slideModel);
+        }
+
+        imageSlider.setImageList(imageList, ScaleTypes.CENTER_CROP);
+        imageSlider.setSlideAnimation(AnimationTypes.ZOOM_OUT);
+        imageSlider.startSliding(10000);
+        imageSlider.setItemClickListener(new ItemClickListener() {
+            @Override
+            public void onItemSelected(int position) {
+                Log.d(TAG, "Item Selected: " + position);
+            }
+            @Override
+            public void doubleClick(int position) {
+                Log.d(TAG, "Item doubleClick: " + position);
+            }
+        });
+
+        imageSlider.setItemChangeListener(position -> {
+            Log.d(TAG, "Item Changed: " + position);
+        });
+
+       imageSlider.setTouchListener((touched, position) -> {
+           if (touched == ActionTypes.DOWN){
+               imageSlider.stopSliding();
+           } else if (touched == ActionTypes.UP ) {
+               imageSlider.startSliding(1000);
+           }
+       });
     }
 
 
     public void setupDashboard() {
         DashBoardManager dashBoardManager = new DashBoardManager();
-
         Setup setup    = new Setup();
         setup.setDebugLog(false);
         setup.setCountDisplay(true);
@@ -69,34 +152,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void intExpendedList() {
         //SETUP With Code
-        View dashboardView = binding.dashboard.getRoot();
-
-        binding.textSelectedItem.setText(sampleList[0]);
-
-        dashboardView.setVisibility(View.VISIBLE);
-        binding.expandableListview.setVisibility(View.GONE);
-
-        ArrayAdapter<String> arr;
-        arr = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, sampleList);
-        binding.list.setAdapter(arr);
-
-        binding.list.setOnItemClickListener((parent, view, position, id) -> {
-            binding.textSelectedItem.setText(sampleList[position]);
-
-            if(0 == position){
-                dashboardView.setVisibility(View.VISIBLE);
-                binding.expandableListview.setVisibility(View.GONE);
-            }else if(1 == position){
-                dashboardView.setVisibility(View.GONE);
-                binding.expandableListview.setVisibility(View.VISIBLE);
-            }
-        });
 
        /* binding.expandableListview.isWithImage(true);
         binding.expandableListview.isWithSorting(false);
         binding.expandableListview.isWithChildArrow(true);
         binding.expandableListview.withChildMode(0);*/
-
 
         binding.expandableListview.setGroupClickListener((group, groupPos) -> {
             binding.expandableListview.getGroups().get(groupPos);
@@ -112,10 +172,15 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<DashBoardItem> dashBoardItems = dashBoardManager.getDashBoardItems(this,"content_dashboard.json");
         binding.expandableListview.doUpdate(dashBoardItems);
 
-        sample();
     }
 
-    private void sample() {
+
+    private void intExpendedSample() {
+        binding.expandableListview.doUpdateWithSample();
+        binding.expandableListview.doUpdate(ExpandableHelper.getSampleGroupList(5));
+    }
+
+    private void intExpendedSampleCustom() {
         List<DashBoardItem> groupList = new ArrayList<>();
         List<Child> childListList = new ArrayList<>();
         childListList.add(new Child().withName("A Cancel saving black pixel perfect solid ui icon. Information record mistake. Unsuccessful process. Silhouette symbol on white space. Glyph pictogram for web, mobile. Isolated vector image - 1").withDescription("A - 1 Description").withThumbnail("https://cdn-icons-png.flaticon.com/512/566/566245.png"));
@@ -130,16 +195,7 @@ public class MainActivity extends AppCompatActivity {
                         .setChilds(childListList)
                         .build();
         groupList.add(item);
-
-         binding.expandableListview.doUpdate(groupList);
-
-         binding.expandableListview.doUpdateWithSample();
-
-         binding.expandableListview.doUpdate(ExpandableHelper.getSampleGroupList(10));
-
-        ArrayList<DashBoardItem> dashBoardItems = new DashBoardManager().getDashBoardItems(this,"content_dashboard.json");
-        binding.expandableListview.doUpdate(dashBoardItems);
-
+        binding.expandableListview.doUpdate(groupList);
     }
 
 

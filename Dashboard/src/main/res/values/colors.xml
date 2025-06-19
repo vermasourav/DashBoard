@@ -21,4 +21,11 @@
     <color name="dashboard_expandable_show_less">#FF0000</color>
     <color name="dashboard_expandable_app_icon">#000000</color>
 
+
+
+    <color name="image_slider_light_font">#FBFBFB</color>
+    <color name="image_slider_grey_font">#ff9e9e9e</color>
+    <color name="image_slider_text_shadow">#7F000000</color>
+    <color name="image_slider_text_shadow_white">#FFFFFF</color>
+
 </resources>

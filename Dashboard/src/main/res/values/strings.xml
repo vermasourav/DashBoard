@@ -13,4 +13,7 @@
     <string name="dashboard_expandable_show_less_h">← less</string>
     <string name="dashboard_expandable_show_more_v">↓ show more</string>
     <string name="dashboard_expandable_show_less_v">↑ less</string>
+
+    <string name="image_slider_left">LEFT</string>
+
 </resources>

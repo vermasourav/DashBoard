@@ -17,6 +17,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <androidx.appcompat.widget.LinearLayoutCompat
+        android:paddingTop="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="match_parent">
@@ -43,6 +44,17 @@
             android:layout_width="match_parent"
             android:layout_height="10dp"
             android:background="@android:color/holo_blue_dark" />
+
+        <com.verma.android.dashboard.ImageSlider
+            android:id="@+id/image_slider"
+            android:layout_width="wrap_content"
+            android:layout_height="350dp"
+            app:iss_auto_cycle="true"
+            app:iss_period="5000"
+            app:iss_delay="5000"
+            app:iss_text_align="CENTER"
+            app:iss_text_color="#FFA0A0"
+            app:iss_no_dots="true"/>
 
         <com.verma.android.dashboard.expendview.CustomExpandableListView
             android:id="@+id/expandable_listview"
