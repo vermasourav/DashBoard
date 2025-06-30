@@ -85,7 +85,7 @@
             app:withChildArrow="true"
             app:withImage= "true"
             app:withSorting="false"
-            app:childMode="windowMode"
+            app:childMode="tabMode"
             tools:listitem="@layout/expended_view_childs">
         </com.verma.android.dashboard.expendview.CustomExpandableListView>
 
