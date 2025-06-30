@@ -91,10 +91,17 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         }
 
         if (0 == childType) {
-            setChildName(child, binding.child);
+            binding.child.setText(child.getChildName());
             setChildImage(child, binding.thumbnail);
-            setChildArrow(binding.nextImage);
-            setChildDescription(child, binding.description);
+            if (!withChildArrow) {
+                binding.nextImage.setVisibility(View.GONE);
+            }
+            if (!TextUtils.isEmpty(child.getDescription())) {
+                binding.description.setVisibility(View.VISIBLE);
+                binding.description.setText(child.getDescription());
+            } else {
+                binding.description.setVisibility(View.GONE);
+            }
         } else {
             // Handle other child types or return a default view
             // For now, returning the existing convertView or a new empty view if null
@@ -108,24 +115,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         return convertView;
     }
 
-    private static void setChildName(Child child, TextView childView) {
-        childView.setText(child.getChildName());
-    }
-
-    private static void setChildDescription(Child child, TextView description) {
-        if (!TextUtils.isEmpty(child.getDescription())) {
-            description.setVisibility(View.VISIBLE);
-            description.setText(child.getDescription());
-        } else {
-            description.setVisibility(View.GONE);
-        }
-    }
-
-    private void setChildArrow(ImageView nextImage) {
-        if (!withChildArrow) {
-            nextImage.setVisibility(View.GONE);
-        }
-    }
 
     private void setChildImage(Child child, ImageView thumbnail) {
         if (withImage) {
@@ -210,6 +199,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     public void isWithImage(boolean withImage) {
         this.withImage = withImage;
     }
+
     public void isWithSorting(boolean sorting) {
         this.withSorting = sorting;
     }
