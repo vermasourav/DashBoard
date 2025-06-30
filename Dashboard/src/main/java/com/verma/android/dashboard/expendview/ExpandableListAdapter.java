@@ -78,22 +78,34 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getChildView(int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-
         final Child child = getChild(groupPosition, childPosition);
-        // Inflating child layout and setting textview
-        LayoutInflater inflater = LayoutInflater.from(context);
+        ExpendedViewChildsBinding binding;
 
-        if(0 == childType) {
-            ExpendedViewChildsBinding binding = ExpendedViewChildsBinding.inflate(inflater, parent, false);
+        if (convertView == null) {
+            LayoutInflater inflater = LayoutInflater.from(context);
+            binding = ExpendedViewChildsBinding.inflate(inflater, parent, false);
+            convertView = binding.getRoot();
+            convertView.setTag(binding);
+        } else {
+            binding = (ExpendedViewChildsBinding) convertView.getTag();
+        }
+
+        if (0 == childType) {
             setChildName(child, binding.child);
-
             setChildImage(child, binding.thumbnail);
             setChildArrow(binding.nextImage);
             setChildDescription(child, binding.description);
-            return binding.getRoot();
-        }else{
-            return null;
+        } else {
+            // Handle other child types or return a default view
+            // For now, returning the existing convertView or a new empty view if null
+            if (convertView == null) {
+                // Inflate a default empty view or handle appropriately
+                // For example, return new View(context); or throw an exception
+                // This part depends on how you want to handle unknown child types
+                return new View(context); // Placeholder
+            }
         }
+        return convertView;
     }
 
     private static void setChildName(Child child, TextView childView) {
@@ -104,6 +116,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         if (!TextUtils.isEmpty(child.getDescription())) {
             description.setVisibility(View.VISIBLE);
             description.setText(child.getDescription());
+        } else {
+            description.setVisibility(View.GONE);
         }
     }
 
@@ -157,11 +171,17 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-        // Inflating header layout
-
         DashBoardItem dashBoardItem = getGroup(groupPosition);
-        LayoutInflater inflater = LayoutInflater.from(context);
-        ExpendViewHeaderBinding binding = ExpendViewHeaderBinding.inflate(inflater, parent, false);
+        ExpendViewHeaderBinding binding;
+
+        if (convertView == null) {
+            LayoutInflater inflater = LayoutInflater.from(context);
+            binding = ExpendViewHeaderBinding.inflate(inflater, parent, false);
+            convertView = binding.getRoot();
+            convertView.setTag(binding);
+        } else {
+            binding = (ExpendViewHeaderBinding) convertView.getTag();
+        }
 
         binding.header.setText(dashBoardItem.getName());
 
@@ -174,8 +194,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             binding.header.setTypeface(null, Typeface.NORMAL);
             binding.header.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_navigate_down, 0);
         }
-
-        return binding.getRoot();
+        return convertView;
     }
 
     @Override

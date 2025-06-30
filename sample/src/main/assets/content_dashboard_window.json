@@ -1,0 +1,60 @@
+{
+  "dash_board_row": [
+    {
+      "groups": [
+        {"name": "Abstract", "description": "Abstract", "visible": true, "childs": []},
+        {"name": "Animal","description": "", "visible": true, "childs": [{},{},{}]},
+        {"name": "Anime","description": "", "visible": true, "childs": []}
+      ]},
+
+    {
+      "groups": [
+        {"name": "Aquatic","description": "4", "visible": true,"childs": []},
+        {"name": "Armband","description": "5", "visible": true,"childs": []}
+      ]
+    },
+
+    {
+      "groups": [
+        {"name": "Aquatic","description": "4", "visible": true, "childs": []},
+        {"name": "Armband","description": "5", "visible": true,"childs": [{},{}]}
+      ]
+    },
+
+    {
+      "groups": [
+        {"name": "Bird","description": "5", "visible": true, "image_url": "","childs": []},
+        {"name": "Buddha","description": "7", "visible": true, "image_url": "","childs": []},
+        {"name": "Butterfly","description": "8", "visible": true, "image_url": "","childs": []}
+      ]
+    },
+
+    {
+      "groups": [
+        {"name": "Clip Art","description": "9", "visible": true, "image_url": "","childs": []}
+      ]
+    },
+
+    {
+      "groups": [
+        {"name": "Cat","description": "10", "visible": true, "image_url": "","childs": []},
+        {"name": "Celestial","description": "11", "visible": true, "image_url": "","childs": []}
+      ]
+    },
+
+    {
+      "groups": [
+        {"name": "Couple","description": "12", "visible": true, "image_url": "","childs": []},
+        {"name": "Dark","description": "13", "visible": true, "image_url": "","childs": []},
+        {"name": "Dragon","description": "14", "visible": true, "image_url": "","childs": []}
+      ]
+    },
+    {
+      "groups": [
+        {"name": "Eagle","description": "10", "visible": true, "image_url": "","childs": []},
+        {"name": "Feather","description": "11", "visible": true, "image_url": "","childs": []}
+      ]
+    }
+
+  ]
+}

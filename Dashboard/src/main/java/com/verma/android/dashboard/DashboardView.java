@@ -54,7 +54,7 @@ public class DashboardView extends FrameLayout {
 
     private void populateCustomValue(AttributeSet attrs) {
         if (null == attrs || null != context) {
-            Log.d(TAG, "populateCustomValue: ");
+            Log.d(TAG, "populateCustomValue: AttributeSet is " + (attrs == null ? "null" : "not null") + ", Context is " + (getContext() == null ? "null" : "not null"));
         }
     }
 
@@ -64,7 +64,7 @@ public class DashboardView extends FrameLayout {
             binding.setItem(dashBoardItem);
             binding.setSetup(setup);
 
-            if(setup.debugLogs){
+            if (setup.isDebugLogs()) {
                 Log.d(TAG, "Setup: debugLogs " +setup.isDebugLogs()
                         +" countDisplay "+setup.isCountDisplay()
                         +" imageDisplay "+setup.isImageDisplay()
@@ -77,18 +77,16 @@ public class DashboardView extends FrameLayout {
                 setUpOnlyText();
             }
 
-
             binding.dashboardCard.setOnClickListener(view -> {
                 if(null != dashboardViewClick){
                     dashboardViewClick.onClick(binding.dashboardCard,dashBoardItem);
                 }else{
-                    Log.d(TAG, "setDashBoardItem: DashboardViewClick is NULL");
+                    Log.w(TAG, "setDashBoardItem: DashboardViewClick is NULL for item: " + dashBoardItem.getName());
                 }
             });
 
-
         }catch (Exception e){
-            //DO Nothing
+            Log.e(TAG, "Error in setDashBoardItem: " + e.getMessage(), e);
         }
     }
 

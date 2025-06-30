@@ -8,8 +8,13 @@
 
 package com.verma.android.dashboard.expendview;
 
+import static com.verma.android.dashboard.expendview.ExpandableHelper.getSampleGroupList;
+
 import com.verma.android.dashboard.DashBoardItem;
+import com.verma.android.dashboard.DashBoardWindowItem;
 import com.verma.android.dashboard.pojo.Child;
+import com.verma.android.dashboard.pojo.DashBoardGroup;
+import com.verma.android.dashboard.pojo.Group;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +36,21 @@ class SampleDataCreator {
         return headerList;
 
     }
+
+    public List<DashBoardWindowItem> getSampleWindowList(int headerCount) {
+        List<DashBoardWindowItem> dashBoardWindowItems = new ArrayList<>();
+
+        for (int i = 0; i < headerCount; i++) {
+            List<DashBoardItem> dashBoardItems = getSampleGroupList(true);
+            DashBoardWindowItem dashBoardWindowItem = new DashBoardWindowItem();
+            dashBoardWindowItem.setDashBoardItems(dashBoardItems);
+            dashBoardWindowItems.add(dashBoardWindowItem);
+        }
+
+        return dashBoardWindowItems;
+
+    }
+
 
     public DashBoardItem getHeader(int childCount) {
         List<Child> childList = new ArrayList<>();

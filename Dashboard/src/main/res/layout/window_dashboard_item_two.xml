@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View" />
+        <variable name="itemA" type="com.verma.android.dashboard.DashBoardItem"/>
+        <variable name="itemB" type="com.verma.android.dashboard.DashBoardItem"/>
+        <variable name="tileColors" type="int[]" />
+        <variable name="setup" type="com.verma.android.dashboard.Setup"/>
+
+    </data>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:background="@color/dashboard_background_color"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <!-- Tile 1 -->
+
+         <include
+             android:id="@+id/layout_item_a"
+             app:item="@{itemA}"
+             app:tileColors="@{tileColors[0]}"
+             app:setup="@{setup}"
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+             android:layout_weight="1"
+             android:visibility="visible"
+             tools:background="#107C10"
+             tools:listitem="@layout/window_dashboard_item_one"
+             layout="@layout/window_dashboard_item_one"
+             />
+
+
+         <include
+             android:id="@+id/layout_item_b"
+             app:item="@{itemB}"
+             app:tileColors="@{tileColors[1]}"
+             app:setup="@{setup}"
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+             android:layout_weight="1"
+             android:visibility="visible"
+             tools:background="#107C10"
+             tools:listitem="@layout/window_dashboard_item_one"
+             layout="@layout/window_dashboard_item_one">
+
+         </include>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    
+</layout>

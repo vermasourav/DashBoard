@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable name="item" type="com.verma.android.dashboard.DashBoardItem" />
+        <variable name="tileColors" type="int" />
+        <variable name="setup" type="com.verma.android.dashboard.Setup"/>
+
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/dashboard_background_color"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <RelativeLayout
+            android:id="@+id/layout_item_a"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="4dp"
+            android:background="@{tileColors}"
+            tools:background="#E81123">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="@tools:sample/first_names"
+                    android:text="@{item.description}"
+                    tools:visibility="visible"
+                    android:visibility="@{item.isDescriptiontDisplay(item.description,setup.discriptionDisplay)? View.VISIBLE : View.GONE}"
+                    android:textAppearance="?android:attr/textAppearanceListItemSecondary"
+
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:textColor="@color/dashboard_text_color" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="@tools:sample/first_names"
+                    android:text="@{item.name}"
+                    android:textColor="@color/dashboard_text_color"
+                    android:ellipsize="end"
+                    android:layout_marginTop="8dp"
+                    android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                    android:layout_marginBottom="8dp"
+                    android:maxLines="2"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+               <androidx.appcompat.widget.AppCompatTextView
+                   android:id="@+id/badge_count"
+                   android:layout_width="35dp"
+                   android:layout_height="35dp"
+                   android:layout_alignParentEnd="true"
+                   android:layout_alignParentTop="true"
+                   android:gravity="center"
+                   android:textStyle="bold"
+                   android:clickable="false"
+                   android:layout_margin="6dp"
+                   android:layout_gravity="top|right"
+                   android:background="@drawable/badge_background"
+                   android:text="@{item.count}"
+                   tools:text="123"
+                   android:visibility="@{item.isCountDisplay(item.count,setup.countDisplay)? View.VISIBLE : View.GONE}"
+                   android:textColor="@color/dashboard_text_color"
+                   tools:visibility="visible" />
+        </RelativeLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

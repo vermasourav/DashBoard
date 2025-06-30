@@ -11,11 +11,14 @@ package com.verma.android.dashboard.sample;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.verma.android.dashboard.DashBoardWindowItem;
 import com.verma.android.dashboard.ImageSlider;
 import com.verma.android.dashboard.Setup;
 import com.verma.android.dashboard.expendview.ExpandableHelper;
@@ -29,6 +32,7 @@ import com.verma.android.dashboard.imageslider.interfaces.ItemClickListener;
 import com.verma.android.dashboard.imageslider.models.SlideModel;
 import com.verma.android.dashboard.pojo.Child;
 import com.verma.android.dashboard.sample.databinding.ActivityMainBinding;
+import com.verma.android.dashboard.window.WindowAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -41,10 +45,12 @@ public class MainActivity extends AppCompatActivity {
 
     String[] sampleList = {
             "Dashboard",
-            "Expended list",
+            "Expended list listMode",
             "Expended list with sample data",
             "Expended list custom",
-            "Slider"
+            "Slider",
+            "Window Dashboard",
+            "Expended Dashboard",
     };
 
 
@@ -57,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         setupDashboard();
         intExpendedList();
         initImageSlider();
+        initWindowDashboard();
     }
 
     private void intList() {
@@ -67,30 +74,45 @@ public class MainActivity extends AppCompatActivity {
         binding.imageSlider.setVisibility(View.GONE);
 
         ArrayAdapter<String> arr;
-        arr = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, sampleList);
+        arr = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, sampleList);
+        arr.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         binding.list.setAdapter(arr);
 
-        binding.list.setOnItemClickListener((parent, view, position, id) -> {
-            binding.textSelectedItem.setText(sampleList[position]);
-            binding.dashboard.getRoot().setVisibility(View.GONE);
-            binding.expandableListview.setVisibility(View.GONE);
-            binding.imageSlider.setVisibility(View.GONE);
 
-            if(0 == position){
-                setupDashboard();
-                binding.dashboard.getRoot().setVisibility(View.VISIBLE);
-            }else if(1 == position){
-                intExpendedList();
-                binding.expandableListview.setVisibility(View.VISIBLE);
-            }else if(2 == position){
-                intExpendedSample();
-                binding.expandableListview.setVisibility(View.VISIBLE);
-            }else if(3 == position){
-                intExpendedSampleCustom();
-                binding.expandableListview.setVisibility(View.VISIBLE);
-            }else if(4 == position){
-                initImageSlider();
-                binding.imageSlider.setVisibility(View.VISIBLE);
+        binding.list.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                binding.textSelectedItem.setText(sampleList[position]);
+                binding.dashboard.getRoot().setVisibility(View.GONE);
+                binding.expandableListview.setVisibility(View.GONE);
+                binding.imageSlider.setVisibility(View.GONE);
+                binding.windowDashboard.getRoot().setVisibility(View.GONE);
+
+                if(0 == position){
+                    setupDashboard();
+                    binding.dashboard.getRoot().setVisibility(View.VISIBLE);
+                }else if(1 == position){
+                    intExpendedList();
+                    binding.expandableListview.setVisibility(View.VISIBLE);
+                }else if(2 == position){
+                    intExpendedSample();
+                    binding.expandableListview.setVisibility(View.VISIBLE);
+                }else if(3 == position){
+                    intExpendedSampleCustom();
+                    binding.expandableListview.setVisibility(View.VISIBLE);
+                }else if(4 == position){
+                    initImageSlider();
+                    binding.imageSlider.setVisibility(View.VISIBLE);
+                }else if(5 == position){
+                    initWindowDashboard();
+                    binding.windowDashboard.getRoot().setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
 
@@ -133,10 +155,28 @@ public class MainActivity extends AppCompatActivity {
        });
     }
 
+    private void initWindowDashboard() {
+       // List<DashBoardWindowItem> tileItems = ExpandableHelper.getSampleWindowList(50);
+        ArrayList<DashBoardWindowItem> windowItems = new DashBoardManager().getWindowsItems(this,"content_dashboard_window.json");
+
+        WindowAdapter windowAdapter = new WindowAdapter(this, windowItems, dashboardClickListener);
+        Setup setup  = new Setup();
+        setup.setDebugLog(false);
+        setup.setCountDisplay(true);
+        setup.setImageDisplay(false);
+        setup.setIsDiscriptionDisplay(false);
+        windowAdapter.setSetup(setup);
+
+        binding.windowDashboard.windowRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        binding.windowDashboard.windowRecyclerView.setAdapter(windowAdapter);
+
+        windowAdapter.setDashboardClickListener(dashboardClickListener);
+
+    }
 
     public void setupDashboard() {
         DashBoardManager dashBoardManager = new DashBoardManager();
-        Setup setup    = new Setup();
+        Setup setup  = new Setup();
         setup.setDebugLog(false);
         setup.setCountDisplay(true);
         setup.setImageDisplay(false);

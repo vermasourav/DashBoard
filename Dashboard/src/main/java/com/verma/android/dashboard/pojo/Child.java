@@ -66,6 +66,8 @@ public class Child implements Serializable {
         final StringBuffer sb = new StringBuffer("Child{");
         sb.append("childId=").append(childId);
         sb.append(", childName='").append(childName).append('\'');
+        sb.append(", description='").append(description).append('\'');
+        sb.append(", thumbnail='").append(thumbnail).append('\'');
         sb.append(", child_visible='").append(visible).append('\'');
         sb.append('}');
         sb.append('\n');

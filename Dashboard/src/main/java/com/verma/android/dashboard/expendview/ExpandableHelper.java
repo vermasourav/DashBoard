@@ -12,6 +12,7 @@ import android.content.Context;
 import android.widget.ExpandableListView;
 
 import com.verma.android.dashboard.DashBoardItem;
+import com.verma.android.dashboard.DashBoardWindowItem;
 import com.verma.android.dashboard.expendview.listener.ExpandableChildListener;
 import com.verma.android.dashboard.expendview.listener.ExpandableGroupListener;
 import com.verma.android.dashboard.expendview.listener.ExpandableListener;
@@ -44,6 +45,9 @@ public class ExpandableHelper {
 
     public static List<DashBoardItem> getSampleGroupList(int headerCount) {
         return new SampleDataCreator().getGroupList(headerCount, null);
+    }
+    public static List<DashBoardWindowItem> getSampleWindowList(int headerCount) {
+        return new SampleDataCreator().getSampleWindowList(headerCount);
     }
 
     public static List<DashBoardItem> getSampleGroupList(Boolean asListView) {
@@ -110,7 +114,6 @@ public class ExpandableHelper {
 
         // This listener will expand one group at one time
         // You can remove this listener for expanding all groups
-
         expandableListview.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
             // Default position
             int previousGroup = -1;
@@ -118,7 +121,7 @@ public class ExpandableHelper {
             @Override
             public void onGroupExpand(int groupPosition) {
                 // Collapse the expanded group
-                if (groupPosition != previousGroup) {
+                if (groupPosition != previousGroup && previousGroup != -1) {
                     expandableListview.collapseGroup(previousGroup);
                 }
                 previousGroup = groupPosition;
@@ -141,7 +144,6 @@ public class ExpandableHelper {
             return false;
         });
     }
-
     public void doUpdate(List<DashBoardItem> listDataHeader) {
         if (null == listDataHeader) {
             this.listGroup = new ArrayList<>();

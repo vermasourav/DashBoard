@@ -88,4 +88,22 @@ public class Group implements Serializable {
         setChilds(childList);
         return this;
     }
+
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("Group{");
+        sb.append("name=").append(name);
+        sb.append(", description=").append(description);
+        sb.append(", visible='").append(visible).append('\'');
+        sb.append(", imageUrl='").append(imageUrl).append('\'');
+        if(null == childs){
+            sb.append(", childs=").append("NULL");
+        }else{
+            sb.append(", childs=").append(childs);
+        }
+        sb.append('}');
+        return sb.toString();
+    }
+
 }

@@ -23,7 +23,7 @@
     },
     {
       "description": "To know, is to know that you know nothing. That is the meaning of true knowledge.",
-      "visible": true,  "name": "A Quotes",
+      "visible": true,  "name": "Quotes",
       "image_url": "",
       "childs": [
         {"visible": true, "id": 13001, "name": "Lao Tzu", "description":  "Kindness in words creates confidence. Kindness in thinking creates profoundness. Kindness in giving creates love.\n\n", "thumbnail": ""},
@@ -31,14 +31,6 @@
         {"visible": true, "id": 13004, "name": "Ernest Hemingway", "description":  "But man is not made for defeat. A man can be destroyed but not defeated.", "thumbnail": ""},
         {"visible": true, "id": 13005, "name": "Ploat", "description":  "Opinion is the medium between knowledge and ignorance.", "thumbnail": ""},
         {"visible": true, "id": 13009, "name": "Calvin Coolidge", "description":  "Knowledge comes, but wisdom lingers. It may not be difficult to store up in the mind a vast quantity of facts within a comparatively short time, but the ability to form judgments requires the severe discipline of hard work and the tempering heat of experience and maturity.", "thumbnail": ""}
-      ]
-    },
-    {
-      "description": "",
-      "visible": true,  "name": "A This is sample long dashboard item name",
-      "image_url": "ic_launcher",
-      "childs": [
-        {"visible": true, "id": 14001, "name": "A 3", "description":  "This is A3 description", "thumbnail": "https://cdn-icons-png.flaticon.com/512/566/566245.png"}
       ]
     }
   ]

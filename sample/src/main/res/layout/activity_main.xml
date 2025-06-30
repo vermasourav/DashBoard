@@ -22,28 +22,47 @@
         android:orientation="vertical"
         android:layout_height="match_parent">
 
-        <ListView
+        <Spinner
             android:id="@+id/list"
+            android:padding="20dp"
+            android:layout_margin="10dp"
             android:layout_width="match_parent"
-            android:layout_height="250dp"/>
-
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text_selected_item"
             android:gravity="center"
             android:textStyle="bold"
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
             android:clickable="false"
-            android:layout_margin="5dp"
             tools:text="121"
             android:textColor="@color/dashboard_text_color"
             tools:visibility="visible" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="10dp"
+            android:layout_height="3dp"
+            android:layout_margin="5dp"
             android:background="@android:color/holo_blue_dark" />
+
+        <include
+            android:id="@+id/windowDashboard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/window_dashboard_item_three"
+            android:visibility="gone"
+            layout="@layout/window_fragment_dashboard" />
+
+        <include
+            android:id="@+id/dashboard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/fragment_dashboard"
+            layout="@layout/fragment_dashboard" />
+
 
         <com.verma.android.dashboard.ImageSlider
             android:id="@+id/image_slider"
@@ -66,16 +85,12 @@
             app:withChildArrow="true"
             app:withImage= "true"
             app:withSorting="false"
-            app:childMode="listMode"
+            app:childMode="windowMode"
             tools:listitem="@layout/expended_view_childs">
         </com.verma.android.dashboard.expendview.CustomExpandableListView>
 
-        <include
-            android:id="@+id/dashboard"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/fragment_dashboard"
-            layout="@layout/fragment_dashboard" />
+
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

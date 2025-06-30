@@ -24,10 +24,10 @@ import java.util.List;
 public class CustomExpandableListView extends ExpandableListView {
     private Context context;
     private ExpandableHelper helper;
-    int childMode;
+
     private void init(Context context) {
         this.context = context;
-        helper = new ExpandableHelper(context,this)
+        helper = new ExpandableHelper(context, this)
                 .withList(null,true)
                 .build();
     }
@@ -40,16 +40,14 @@ public class CustomExpandableListView extends ExpandableListView {
             return;
         }
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.CustomExpandableListView);
-        boolean withImage = typedArray.getBoolean(R.styleable.CustomExpandableListView_withImage,false);
-        boolean withSorting = typedArray.getBoolean(R.styleable.CustomExpandableListView_withSorting,false);
-        boolean withChildArrow = typedArray.getBoolean(R.styleable.CustomExpandableListView_withChildArrow,false);
-        final int withChildMode = typedArray.getResourceId(R.styleable.CustomExpandableListView_childMode, 0);
-
-        isWithImage(withImage);
-        isWithSorting(withSorting);
-        isWithChildArrow(withChildArrow);
-        withChildMode(withChildMode);
-        typedArray.recycle();
+        try {
+            isWithImage(typedArray.getBoolean(R.styleable.CustomExpandableListView_withImage, false));
+            isWithSorting(typedArray.getBoolean(R.styleable.CustomExpandableListView_withSorting, false));
+            isWithChildArrow(typedArray.getBoolean(R.styleable.CustomExpandableListView_withChildArrow, false));
+            withChildMode(typedArray.getResourceId(R.styleable.CustomExpandableListView_childMode, 0));
+        } finally {
+            typedArray.recycle();
+        }
     }
 
     public void isWithChildArrow(boolean withChildArrow) {
@@ -104,7 +102,6 @@ public class CustomExpandableListView extends ExpandableListView {
     public void doUpdateWithSample() {
         helper.doUpdateWithSample();
     }
-
 
     public void doUpdate(ArrayList<DashBoardItem> dashBoardItems) {
         helper.doUpdate(dashBoardItems);
