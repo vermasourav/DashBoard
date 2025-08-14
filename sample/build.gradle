@@ -39,7 +39,7 @@ android {
 
 dependencies {
     // implementation fileTree(dir: 'libs', include: ['*.aar'])
-    //implementation "com.github.vermasourav:DashBoard:1.0.14"
+    //implementation "com.github.vermasourav:DashBoard:1.0.17"
 
     implementation project(path: ':Dashboard')
 
