@@ -17,7 +17,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -25,6 +24,7 @@ import com.verma.android.dashboard.DashBoardItem;
 import com.verma.android.dashboard.R;
 import com.verma.android.dashboard.databinding.ExpendViewHeaderBinding;
 import com.verma.android.dashboard.databinding.ExpendedViewChildsBinding;
+import com.verma.android.dashboard.databinding.ExpendedViewWindowChildsBinding;
 import com.verma.android.dashboard.pojo.Child;
 
 import java.util.Comparator;
@@ -63,7 +63,13 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     private void sortingChild(List<Child> pChildList) {
-        pChildList.sort(Comparator.comparing(lhs -> lhs.getChildName().toLowerCase()));
+        pChildList.sort(Comparator.comparing(lhs -> {
+            String childName = lhs.getChildName();
+            if (childName == null) {
+                return ""; // Treat null as empty string for sorting purposes
+            }
+            return childName.toLowerCase();
+        }));
     }
 
     @Override
@@ -79,38 +85,51 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         final Child child = getChild(groupPosition, childPosition);
-        ExpendedViewChildsBinding binding;
+        ExpendedViewChildsBinding viewChildBinding = null;
+        ExpendedViewWindowChildsBinding windowChildBinding = null;
+        Object tag;
 
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(context);
-            binding = ExpendedViewChildsBinding.inflate(inflater, parent, false);
-            convertView = binding.getRoot();
-            convertView.setTag(binding);
+            if (0 == childType) {
+                viewChildBinding = ExpendedViewChildsBinding.inflate(inflater, parent, false);
+                convertView = viewChildBinding.getRoot();
+                convertView.setTag(viewChildBinding);
+            } else if (1 == childType) {
+                windowChildBinding = ExpendedViewWindowChildsBinding.inflate(inflater, parent, false);
+                convertView = windowChildBinding.getRoot();
+                convertView.setTag(windowChildBinding);
+            } else {
+                // Handle other child types or return a default view
+                return new View(context); // Placeholder
+            }
         } else {
-            binding = (ExpendedViewChildsBinding) convertView.getTag();
+            tag = convertView.getTag();
+            if (0 == childType && tag instanceof ExpendedViewChildsBinding) {
+                viewChildBinding = (ExpendedViewChildsBinding) tag;
+            } else if (1 == childType && tag instanceof ExpendedViewWindowChildsBinding) {
+                windowChildBinding = (ExpendedViewWindowChildsBinding) tag;
+            } else {
+                // Tag type doesn't match childType, reinflate or handle error
+                // This scenario indicates a problem with view recycling or adapter logic
+                // For simplicity, reinflating, but ideally, this case should be investigated
+                LayoutInflater inflater = LayoutInflater.from(context);
+                if (0 == childType) {
+                    viewChildBinding = ExpendedViewChildsBinding.inflate(inflater, parent, false);
+                    convertView = viewChildBinding.getRoot();
+                    convertView.setTag(viewChildBinding);
+                } else if (1 == childType) {
+                    windowChildBinding = ExpendedViewWindowChildsBinding.inflate(inflater, parent, false);
+                    convertView = windowChildBinding.getRoot();
+                    convertView.setTag(windowChildBinding);
+                }
+            }
         }
 
         if (0 == childType) {
-            binding.child.setText(child.getChildName());
-            setChildImage(child, binding.thumbnail);
-            if (!withChildArrow) {
-                binding.nextImage.setVisibility(View.GONE);
-            }
-            if (!TextUtils.isEmpty(child.getDescription())) {
-                binding.description.setVisibility(View.VISIBLE);
-                binding.description.setText(child.getDescription());
-            } else {
-                binding.description.setVisibility(View.GONE);
-            }
-        } else {
-            // Handle other child types or return a default view
-            // For now, returning the existing convertView or a new empty view if null
-            if (convertView == null) {
-                // Inflate a default empty view or handle appropriately
-                // For example, return new View(context); or throw an exception
-                // This part depends on how you want to handle unknown child types
-                return new View(context); // Placeholder
-            }
+            populateViewChild(child, viewChildBinding);
+        } else if (1 == childType) {
+            populateWindowChild(child, windowChildBinding);
         }
         return convertView;
     }
@@ -132,6 +151,36 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             }
         } else {
             thumbnail.setVisibility(View.GONE);
+        }
+    }
+
+    private void populateViewChild(Child child, ExpendedViewChildsBinding binding) {
+        if (binding == null) return;
+        binding.child.setText(child.getChildName());
+        setChildImage(child, binding.thumbnail);
+        if (!withChildArrow) {
+            binding.nextImage.setVisibility(View.GONE);
+        } else {
+            binding.nextImage.setVisibility(View.VISIBLE);
+        }
+        if (!TextUtils.isEmpty(child.getDescription())) {
+            binding.description.setVisibility(View.VISIBLE);
+            binding.description.setText(child.getDescription());
+        } else {
+            binding.description.setVisibility(View.GONE);
+        }
+    }
+
+    private void populateWindowChild(Child child, ExpendedViewWindowChildsBinding binding) {
+        if (binding == null) return;
+        binding.child.setText(child.getChildName());
+        setChildImage(child, binding.thumbnail);
+        // if (!withChildArrow) { // Assuming no 'nextImage' in window child, or handle similarly }
+        if (!TextUtils.isEmpty(child.getDescription())) {
+            binding.description.setVisibility(View.VISIBLE);
+            binding.description.setText(child.getDescription());
+        } else {
+            binding.description.setVisibility(View.GONE);
         }
     }
 

@@ -60,7 +60,7 @@ public class ExpandableHelper {
     }
 
     public ExpandableHelper withList(List<DashBoardItem> pList, boolean sorting) {
-        init(context, expandableListview, pList, sorting);
+        init(this.context, this.expandableListview, pList, sorting);
         return this;
     }
 
@@ -101,12 +101,12 @@ public class ExpandableHelper {
     void setListener() {
         expandableListview.setGroupIndicator(null);
         expandableListview.setOnGroupClickListener((expandableListView, view, groupPos, l) -> {
-            DashBoardItem group = adapter.getGroup(groupPos);
+            DashBoardItem currentGroup = adapter.getGroup(groupPos);
             if (null != listener) {
-                listener.onGroupClick(group, groupPos);
+                listener.onGroupClick(currentGroup, groupPos);
             }
             if (null != groupListener) {
-                groupListener.onGroupClick(group, groupPos);
+                groupListener.onGroupClick(currentGroup, groupPos);
             }
             return false;
         });
@@ -117,10 +117,9 @@ public class ExpandableHelper {
         expandableListview.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
             // Default position
             int previousGroup = -1;
-
             @Override
             public void onGroupExpand(int groupPosition) {
-                // Collapse the expanded group
+                // Collapse the previously expanded group
                 if (groupPosition != previousGroup && previousGroup != -1) {
                     expandableListview.collapseGroup(previousGroup);
                 }

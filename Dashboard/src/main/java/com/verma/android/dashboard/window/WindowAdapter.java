@@ -2,12 +2,16 @@ package com.verma.android.dashboard.window;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.verma.android.dashboard.DashBoardItem;
 import com.verma.android.dashboard.DashBoardWindowItem;
 import com.verma.android.dashboard.DashboardClickListener;
@@ -81,10 +85,10 @@ public class WindowAdapter extends RecyclerView.Adapter {
 
     // Inflates the appropriate layout according to the ViewType.
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
         View view;
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        int[] currentTileColors = new int[] {tileColors[0],tileColors[1],tileColors[2]};
+        int[] currentTileColors = {tileColors[0], tileColors[1], tileColors[2]};
 
         switch (viewType) {
             case VIEW_TYPE_ONE_COLUMN:
@@ -106,7 +110,7 @@ public class WindowAdapter extends RecyclerView.Adapter {
                 currentTileColors[1] = tileColors[1];
                 currentTileColors[2] = tileColors[2];
                 view = inflater.inflate(R.layout.window_dashboard_item_three, parent, false);
-                return new ThreeColumnHolder(view, currentTileColors,setup, listener);
+                return new ThreeColumnHolder(view, currentTileColors, setup, listener);
             case VIEW_TYPE_THREE_COLUMN_B:
                 currentTileColors[0] = tileColors[3];
                 currentTileColors[1] = tileColors[4];
@@ -124,7 +128,7 @@ public class WindowAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         List<DashBoardItem> dashBoardItems = dashBoardWindowItems.get(position).dashBoardItems;
-          switch (holder.getItemViewType()) {
+        switch (holder.getItemViewType()) {
             case VIEW_TYPE_ONE_COLUMN:
                 ((OneColumnHolder) holder).bind(dashBoardItems);
                 break;
@@ -139,12 +143,13 @@ public class WindowAdapter extends RecyclerView.Adapter {
         }
     }
 
+
     private static class OneColumnHolder extends RecyclerView.ViewHolder {
-        WindowDashboardItemOneBinding binding;
-        int[] colors;
+        private final WindowDashboardItemOneBinding binding;
+        private final int[] colors;
         DashboardClickListener listener;
 
-        OneColumnHolder(View itemView, int[] tileColor,  Setup setup, DashboardClickListener listener) {
+        OneColumnHolder(View itemView, int[] tileColor, Setup setup, DashboardClickListener listener) {
             super(itemView);
             binding = WindowDashboardItemOneBinding.bind(itemView);
             binding.setTileColors(tileColor[0]);
@@ -153,7 +158,6 @@ public class WindowAdapter extends RecyclerView.Adapter {
             this.listener = listener;
         }
 
-
         void bind(List<DashBoardItem> dashBoardItems) {
             if (dashBoardItems != null && !dashBoardItems.isEmpty()) {
                 final DashBoardItem item = dashBoardItems.get(0);
@@ -161,12 +165,32 @@ public class WindowAdapter extends RecyclerView.Adapter {
                 binding.setTileColors(colors[0]);
                 binding.getRoot().setOnClickListener(v -> {
                     if (listener != null) {
-                        listener.onClick(v,item);
+                        listener.onClick(v, item);
                     }
                 });
+                setChildImage(binding.thumbnail,binding.getSetup().isImageDisplay(), binding.getRoot().getContext(), item.getUrl());
             }
         }
     }
+
+     public static void setChildImage(ImageView thumbnail,boolean isImageDisplay, Context context, String pUrl) {
+        if (isImageDisplay) {
+                thumbnail.setVisibility(View.VISIBLE);
+                thumbnail.setImageResource(R.drawable.no_image);
+                if (!TextUtils.isEmpty(pUrl)) {
+                    Glide.with(context)
+                            .load(pUrl)
+                            .centerCrop()
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .error(R.drawable.no_image)
+                            .into(thumbnail);
+                } else {
+                    thumbnail.setVisibility(View.GONE);
+                }
+            } else {
+                thumbnail.setVisibility(View.GONE);
+            }
+        }
 
     private static class TwoColumnHolder extends RecyclerView.ViewHolder {
         WindowDashboardItemTwoBinding binding;
@@ -188,15 +212,17 @@ public class WindowAdapter extends RecyclerView.Adapter {
                 final DashBoardItem itemB = dashBoardItems.get(1);
                 binding.setItemA(itemA);
                 binding.setItemB(itemB);
+                setChildImage(binding.layoutItemA.thumbnail,binding.getSetup().isImageDisplay(), binding.getRoot().getContext(), itemA.getUrl());
+                setChildImage(binding.layoutItemB.thumbnail, binding.getSetup().isImageDisplay(), binding.getRoot().getContext(), itemB.getUrl());
 
                 binding.layoutItemA.getRoot().setOnClickListener(v -> {
                     if (listener != null) {
-                        listener.onClick(v,itemA);
+                        listener.onClick(v, itemA);
                     }
                 });
                 binding.layoutItemB.getRoot().setOnClickListener(v -> {
                     if (listener != null) {
-                        listener.onClick(v,itemB);
+                        listener.onClick(v, itemB);
 
                     }
                 });
@@ -205,8 +231,8 @@ public class WindowAdapter extends RecyclerView.Adapter {
     }
 
     private static class ThreeColumnHolder extends RecyclerView.ViewHolder {
-        WindowDashboardItemThreeBinding binding;
-        int[] colors;
+        private final WindowDashboardItemThreeBinding binding;
+        private final int[] colors;
         DashboardClickListener listener;
 
         ThreeColumnHolder(View itemView, int[] tileColor, Setup setup, DashboardClickListener listener) {
@@ -227,20 +253,23 @@ public class WindowAdapter extends RecyclerView.Adapter {
                 binding.setItemA(itemA);
                 binding.setItemB(itemB);
                 binding.setItemC(itemC);
+                setChildImage(binding.layoutItemA.thumbnail,binding.getSetup().isImageDisplay(), binding.getRoot().getContext(), itemA.getUrl());
+                setChildImage(binding.layoutItemB.thumbnail, binding.getSetup().isImageDisplay(), binding.getRoot().getContext(), itemB.getUrl());
+                setChildImage(binding.layoutItemC.thumbnail,binding.getSetup().isImageDisplay(), binding.getRoot().getContext(), itemC.getUrl());
 
                 binding.layoutItemA.getRoot().setOnClickListener(v -> {
                     if (listener != null) {
-                        listener.onClick(v,itemA);
+                        listener.onClick(v, itemA);
                     }
                 });
                 binding.layoutItemB.getRoot().setOnClickListener(v -> {
                     if (listener != null) {
-                        listener.onClick(v,itemB);
+                        listener.onClick(v, itemB);
                     }
                 });
                 binding.layoutItemC.getRoot().setOnClickListener(v -> {
                     if (listener != null) {
-                        listener.onClick(v,itemC);
+                        listener.onClick(v, itemC);
                     }
                 });
             }

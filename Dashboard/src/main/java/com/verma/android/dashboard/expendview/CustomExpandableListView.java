@@ -88,7 +88,7 @@ public class CustomExpandableListView extends ExpandableListView {
     public CustomExpandableListView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(context);
-        populateCustomValue(attrs);
+        populateCustomValue(attrs); // Keep this call here
     }
 
     public List<DashBoardItem> getGroups() {
@@ -108,6 +108,10 @@ public class CustomExpandableListView extends ExpandableListView {
     }
 
     public void withChildMode(int childType) {
+        helper.withChildMode(childType);
+    }
+
+    public void setChildMode(int childType) {
         helper.withChildMode(childType);
     }
 }

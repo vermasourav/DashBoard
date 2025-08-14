@@ -26,27 +26,27 @@ public class DashBoardItem {
     @DrawableRes
     private int image = R.drawable.ic_launcher;
     private int id;
-    private  String count;
+    private String count;
     private final String name;
     private String description;
     private final String url;
     private List<Child> childs;
 
-    public boolean isCountDisplay(String text, boolean isAllow){
-        if(isAllow){
+    public boolean isCountDisplay(String text, boolean isAllow) {
+        if (isAllow) {
             return !TextUtils.isEmpty(text) && !text.equals("0");
-        }else{
-            return false;
-        }
-    }
-    public boolean isDescriptiontDisplay(String text, boolean isAllow) {
-        if(isAllow){
-            return !TextUtils.isEmpty(text);
-        }else{
+        } else {
             return false;
         }
     }
 
+    public boolean isDescriptionDisplay(String text, boolean isAllow) {
+        if (isAllow) {
+            return !TextUtils.isEmpty(text);
+        } else {
+            return false;
+        }
+    }
 
 
     @Override
@@ -58,9 +58,9 @@ public class DashBoardItem {
         sb.append(", name='").append(name).append('\'');
         sb.append(", url='").append(url).append('\'');
         sb.append(", description='").append(description).append('\'');
-        if(null == childs){
+        if (null == childs) {
             sb.append(", childs=").append("NULL");
-        }else{
+        } else {
             sb.append(", childs=").append(childs);
         }
         sb.append('}');
@@ -97,6 +97,7 @@ public class DashBoardItem {
     public int getImage() {
         return image;
     }
+
     public int getId() {
         return id;
     }
@@ -118,7 +119,7 @@ public class DashBoardItem {
         private String description;
         private int image;
         private boolean visible;
-        private List<Child> childs= new ArrayList<>();
+        private List<Child> childs = new ArrayList<>();
 
         public DashBoardItemBuilder() {
             //DO Nothing
@@ -143,35 +144,40 @@ public class DashBoardItem {
             this.image = image;
             return this;
         }
+
         public DashBoardItemBuilder setChilds(List<Child> childs) {
             this.childs = childs;
             return this;
         }
+
         public DashBoardItemBuilder setVisible(boolean visible) {
             this.visible = visible;
             return this;
         }
+
         public DashBoardItemBuilder setId(int id) {
             this.id = id;
             return this;
         }
+
         public DashBoardItemBuilder setCount(String count) {
             this.count = count;
             return this;
         }
+
         public DashBoardItem build() {
             setupLocalImage();
             return new DashBoardItem(this);
         }
 
         private void setupLocalImage() {
-            if(!TextUtils.isEmpty(url) && !isValidURL(url)){
+            if (!TextUtils.isEmpty(url) && !isValidURL(url)) {
                 image = R.drawable.no_image;
             }
 
         }
 
-        private boolean isValidURL(String url){
+        private boolean isValidURL(String url) {
             return !TextUtils.isEmpty(url) && URLUtil.isValidUrl(url) && Patterns.WEB_URL.matcher(url).matches();
         }
     }

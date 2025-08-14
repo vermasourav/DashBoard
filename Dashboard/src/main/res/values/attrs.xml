@@ -14,7 +14,7 @@
         <attr name="withChildArrow" format="boolean" />
         <attr name="childMode" format="integer">
             <enum name="listMode" value="0" />
-            <enum name="tabMode" value="1" />
+            <enum name="windowMode" value="1" />
         </attr>
     </declare-styleable>
 

@@ -3,7 +3,7 @@
   "groups": [
     {
       "description": "Android OS is a Linux-based mobile operating system that primarily runs on smartphones and tablets. The Android platform includes an operating system based upon the Linux kernel, a GUI, a web browser and end-user applications that can be downloaded.",
-      "visible": true,  "name": "Android Description",
+      "visible": true,  "name": "Android",
       "image_url": "https://cdn-icons-png.flaticon.com/512/566/566245.png",
       "childs": [
         {"visible": true, "id": 11012, "name": "Android 14", "description":  "Build richer camera and media experiences with Ultra HDR, more camera extensions, and lossless USB audio. Simplify sign-in using Credential Manager, and provide health and fitness insights securely using Health Connect. Make your app more expressive and personal with predictive back, per-app languages, grammatical inflection, and more. Deliver engaging, differentiated experiences on large screens.", "thumbnail": ""},
@@ -32,6 +32,26 @@
         {"visible": true, "id": 13005, "name": "Ploat", "description":  "Opinion is the medium between knowledge and ignorance.", "thumbnail": ""},
         {"visible": true, "id": 13009, "name": "Calvin Coolidge", "description":  "Knowledge comes, but wisdom lingers. It may not be difficult to store up in the mind a vast quantity of facts within a comparatively short time, but the ability to form judgments requires the severe discipline of hard work and the tempering heat of experience and maturity.", "thumbnail": ""}
       ]
-    }
+    },
+
+    {"name": "Abstract", "description": "", "visible": true,"childs": []},
+    {"name": "Animal","description": "", "visible": true, "childs": [{},{},{}]},
+    { "name": "Anime","description": "", "visible": true},
+    {"name": "Aquatic","description": "", "visible": true},
+    {"name": "Armband","description": "", "visible": true},
+    {"name": "Aquatic","description": "", "visible": true},
+    {"name": "Armband","description": "", "visible": true},
+    {"name": "Bird","description": "", "visible": true},
+    {"name": "Buddha","description": "", "visible": true},
+    {"name": "Butterfly","description": "", "visible": true},
+    {"name": "Clip Art","description": "", "visible": true},
+    {"name": "Cat","description": "", "visible": true},
+    {"name": "Celestial","description": "", "visible": true},
+    {"name": "Couple","description": "", "visible": true},
+    {"name": "Dark","description": "", "visible": true},
+    {"name": "Dragon","description": "", "visible": true},
+    {"name": "Eagle","description": "", "visible": true},
+    {"name": "Feather","description": "", "visible": true}
+
   ]
 }

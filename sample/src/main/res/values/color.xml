@@ -8,7 +8,7 @@
   -->
 
 <resources>
-    <color name="dashboard_badge_bg_color">#6CF4B9</color>
-    <color name="dashboard_background_color">#798976</color>
+    <color name="dashboard_badge_bg_color">#B2DFDB</color>
+    <color name="dashboard_background_color">#F1EFF6</color>
     <color name="dashboard_text_color">@android:color/black</color>
 </resources>

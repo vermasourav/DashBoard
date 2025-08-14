@@ -25,6 +25,7 @@
         <Spinner
             android:id="@+id/list"
             android:padding="20dp"
+            android:background="@drawable/bg_line_box"
             android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -85,7 +86,7 @@
             app:withChildArrow="true"
             app:withImage= "true"
             app:withSorting="false"
-            app:childMode="tabMode"
+            app:childMode="listMode"
             tools:listitem="@layout/expended_view_childs">
         </com.verma.android.dashboard.expendview.CustomExpandableListView>
 

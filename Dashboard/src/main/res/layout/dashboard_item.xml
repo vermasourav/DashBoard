@@ -95,7 +95,8 @@
                     android:textAppearance="?android:attr/textAppearanceListItemSmall"
                     tools:text="@tools:sample/lorem/random"
                     android:layout_marginTop="8dp"
-                    android:maxLines="3"
+                    android:maxLines="@integer/dashboard_title_max_line"
+
                     android:ellipsize="end"
                     tools:textColor="@android:color/black"
                     android:textColor="@color/dashboard_text_color"
@@ -111,8 +112,8 @@
                     tools:text="@tools:sample/lorem/random"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
-                    android:maxLines="3"
-                    android:visibility="@{item.isDescriptiontDisplay(item.description,setup.discriptionDisplay)? View.VISIBLE : View.GONE}"
+                    android:maxLines="@integer/dashboard_description_max_line"
+                    android:visibility="@{item.isDescriptionDisplay(item.description,setup.discriptionDisplay)? View.VISIBLE : View.GONE}"
 
                     tools:textColor="@android:color/black"
                     tools:visibility="visible"
