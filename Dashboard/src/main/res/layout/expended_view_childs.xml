@@ -8,12 +8,12 @@
   -->
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="250dp"
+    android:layout_height="@dimen/dashboard_expandable_height"
     android:clipChildren="false"
     android:maxHeight="500dp"
     android:layout_margin="8dp"
-    xmlns:tools="http://schemas.android.com/tools"
     android:paddingTop="@dimen/dashboard_expandable_padding_top"
     android:paddingStart="@dimen/dashboard_expandable_padding_left"
     android:paddingRight="@dimen/dashboard_expandable_padding_right"
