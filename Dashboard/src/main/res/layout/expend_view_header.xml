@@ -26,6 +26,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="6dp"
             android:drawablePadding="10dp"
+            android:textColor="@color/dashboard_text_color"
             android:padding="10dp"
             android:maxLines="@integer/expended_list_title_max_line"
             android:ellipsize="end"
