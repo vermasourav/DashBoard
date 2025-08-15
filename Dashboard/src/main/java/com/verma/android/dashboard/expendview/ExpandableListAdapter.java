@@ -158,11 +158,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         if (binding == null) return;
         binding.child.setText(child.getChildName());
         setChildImage(child, binding.thumbnail);
-        if (!withChildArrow) {
-            binding.nextImage.setVisibility(View.GONE);
-        } else {
-            binding.nextImage.setVisibility(View.VISIBLE);
-        }
+        binding.nextImage.setVisibility(withChildArrow ? View.VISIBLE : View.GONE);
         if (!TextUtils.isEmpty(child.getDescription())) {
             binding.description.setVisibility(View.VISIBLE);
             binding.description.setText(child.getDescription());
