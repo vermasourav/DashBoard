@@ -35,8 +35,6 @@ import com.verma.android.dashboard.sample.databinding.ActivityMainBinding;
 import com.verma.android.dashboard.window.WindowAdapter;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -175,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
         setup.setDebugLog(false);
         setup.setCountDisplay(true);
         setup.setImageDisplay(false);
-        setup.setIsDiscriptionDisplay(true);
+        setup.setDescriptionDisplay(true);
 
         windowAdapter.setSetup(setup);
         binding.windowDashboard.windowRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -191,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
         setup.setDebugLog(false);
         setup.setCountDisplay(true);
         setup.setImageDisplay(false);
-        setup.setIsDiscriptionDisplay(true);
+        setup.setDescriptionDisplay(true);
         dashBoardManager.setSetup(setup);
 
         View includedLayout = findViewById(R.id.dashboard);

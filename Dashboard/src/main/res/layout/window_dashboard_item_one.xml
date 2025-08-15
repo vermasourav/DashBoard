@@ -54,7 +54,7 @@
                     tools:text="@tools:sample/first_names"
                     android:text="@{item.description}"
                     tools:visibility="visible"
-                    android:visibility="@{item.isDescriptionDisplay(item.description,setup.discriptionDisplay)? View.VISIBLE : View.GONE}"
+                    android:visibility="@{item.isDescriptionDisplay(item.description,setup.descriptionDisplay)? View.VISIBLE : View.GONE}"
                     android:textAppearance="?android:attr/textAppearanceListItemSecondary"
 
                     android:maxLines="2"

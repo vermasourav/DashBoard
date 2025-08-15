@@ -14,10 +14,10 @@ public class Setup {
     public boolean debugLogs = false;
     public boolean countDisplay = true;
     public boolean imageDisplay = true;
-    public boolean discriptionDisplay = false;
+    public boolean descriptionDisplay = false;
 
-    public boolean isDiscriptionDisplay() {
-        return discriptionDisplay;
+    public boolean isDescriptionDisplay() {
+        return descriptionDisplay;
     }
 
     public boolean isCountDisplay() {
@@ -44,8 +44,8 @@ public class Setup {
         this.imageDisplay = isImageDisplay;
     }
 
-    public void setIsDiscriptionDisplay(boolean discriptionDisplay) {
-        this.discriptionDisplay = discriptionDisplay;
+    public void setDescriptionDisplay(boolean descriptionDisplay) {
+        this.descriptionDisplay = descriptionDisplay;
     }
 
 }

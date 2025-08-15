@@ -68,7 +68,7 @@ public class DashboardView extends FrameLayout {
                 Log.d(TAG, "Setup: debugLogs " +setup.isDebugLogs()
                         +" countDisplay "+setup.isCountDisplay()
                         +" imageDisplay "+setup.isImageDisplay()
-                        +" discriptionDisplay "+setup.isDiscriptionDisplay());
+                        +" discriptionDisplay "+setup.isDescriptionDisplay());
             }
 
             if( setup.isImageDisplay()){
