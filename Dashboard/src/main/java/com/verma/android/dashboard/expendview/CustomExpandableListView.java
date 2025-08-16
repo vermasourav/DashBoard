@@ -28,7 +28,7 @@ public class CustomExpandableListView extends ExpandableListView {
     private void init(Context context) {
         this.context = context;
         helper = new ExpandableHelper(context, this)
-                .withList(null,true)
+                .withList(null,false)
                 .build();
     }
     public Context getCustomContext() {
