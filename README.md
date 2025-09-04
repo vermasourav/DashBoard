@@ -19,7 +19,7 @@ Add the dependency in your app's `build.gradle`:
 
 ```groovy
 dependencies {
-    implementation 'com.github.vermasourav:DashBoard:1.0.16'
+    implementation 'com.github.vermasourav:DashBoard:1.0.20'
 }
 ```
 
@@ -132,7 +132,12 @@ Define dashboard items in `content_dashboard.json` in the `assets` folder:
         tools:listitem="@layout/expended_view_childs">
     </com.verma.android.dashboard.expendview.CustomExpandableListView>
 ```
-
+ <attr name="childMode" format="integer">
+            <enum name="listMode" value="0" />
+            <enum name="window" value="1" />
+            <enum name="dashboard" value="2" />
+            <enum name="slide" value="3" />
+        </attr>
 
 ```java
 	private void intExpendedList() {
@@ -161,6 +166,58 @@ Define dashboard items in `content_dashboard.json` in the `assets` folder:
 		// test();
 	}
 ```
+
+
+```java
+    private void intWindowist() {
+
+        DashBoardManager dashBoardManager = new DashBoardManager();
+        Setup setup = new Setup();
+        setup.setDebugLog(false);
+        setup.setCountDisplay(true);
+        setup.setImageDisplay(false);
+        setup.setDescriptionDisplay(true);
+        dashBoardManager.setSetup(setup);
+        binding.expandableListview.withChildMode(2);
+
+        binding.expandableListview.setGroupClickListener((group, groupPos) -> {
+			binding.expandableListview.getGroups().get(groupPos);
+            if(DashBoardManager.isDebugLogs()) {
+                Log.d(TAG, ": You clicked :: "+ group.getName());
+            }
+		});
+		
+		binding.expandableListview.setChildClickListener((child, groupPos, childPos, header) -> {
+            if(DashBoardManager.isDebugLogs()) {
+                Log.d(TAG, ": You clicked :: "+ group.getChildName());
+            }
+		});
+		
+		DashBoardManager dashBoardManager = new DashBoardManager();
+		ArrayList<DashBoardItem> dashBoardItems = dashBoardManager.getDashBoardItems(this,"content_dashboard.json");
+		binding.expandableListview.doUpdate(dashBoardItems);
+        
+	}
+```
+
+
+```java
+    public void setupDashboard() {
+        DashBoardManager dashBoardManager = new DashBoardManager();
+        Setup setup = new Setup();
+        setup.setDebugLog(false);
+        setup.setCountDisplay(true);
+        setup.setImageDisplay(false);
+        setup.setDescriptionDisplay(true);
+        dashBoardManager.setSetup(setup);
+
+        View includedLayout = findViewById(R.id.dashboard);
+        ArrayList<DashBoardItem> dashBoardItems = dashBoardManager.getDashBoardItems(this, "content_dashboard.json");
+        Collections.sort(dashBoardItems, Comparator.comparing(o -> o.getName().toLowerCase()));
+        dashBoardManager.setupDashboard(this, dashBoardManager.getGridLayout(includedLayout), 2, dashBoardItems, dashboardClickListener);
+    }
+```
+
 
 
 For more details, visit the [GitHub repository](https://github.com/vermasourav/DashBoard).

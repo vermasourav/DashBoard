@@ -19,6 +19,21 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <!--  Icon Image -->
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/thumbnail"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:maxHeight="@dimen/expended_image_max_height"
+            android:maxWidth="@dimen/expended_image_max_width"
+            android:padding="5dp"
+            android:visibility="gone"
+            tools:src="@tools:sample/avatars"
+            android:src="@drawable/no_image"
+            tools:visibility="visible"
+            android:scaleType="centerCrop"
+            android:background="@drawable/bg_dashboard_circle_background"
+            android:elevation="2dp" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/header"
@@ -28,6 +43,7 @@
             android:drawablePadding="10dp"
             android:textColor="@color/dashboard_text_color"
             android:padding="10dp"
+            android:gravity="left|center"
             android:maxLines="@integer/expended_list_title_max_line"
             android:ellipsize="end"
             android:textAppearance="?android:attr/textAppearanceListItemSmall"

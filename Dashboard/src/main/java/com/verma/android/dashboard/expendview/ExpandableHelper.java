@@ -31,6 +31,15 @@ public class ExpandableHelper {
     private Context context;
     private boolean sorting = false;
 
+
+    public enum ChildType {
+        LISTMODE,
+        DASHBOARD,
+        WINDOW,
+        SLIDE
+    }
+
+
     public ExpandableHelper() {
         //DO Nothing
     }
@@ -75,6 +84,10 @@ public class ExpandableHelper {
     public void withChildMode(int childType) {
         adapter.withChildMode(childType);
     }
+    public void withChildModeCount(int childModeColumnCount) {
+        adapter.withChildModeCount(childModeColumnCount);
+    }
+
 
     private void init(Context context, CustomExpandableListView expandableListview, List<DashBoardItem> pList, boolean sorting) {
         this.expandableListview = expandableListview;

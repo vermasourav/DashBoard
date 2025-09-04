@@ -45,10 +45,11 @@ public class MainActivity extends AppCompatActivity {
             "Window Dashboard",
             "Dashboard",
             "Slider",
-            "Expended list listMode",
-            "Expended list Window",
-            "Expended list with sample data",
-            "Expended list custom"
+            "Expended list",
+            "Expended Window",
+            "Expended dashboard",
+            "Expended with sample data - dashboard",
+            "Expended custom - List"
     };
 
 
@@ -58,10 +59,6 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         intSample();
-       // setupDashboard();
-        //intExpendedList(0);
-        //initImageSlider();
-        //initWindowDashboard();
     }
 
     private void intSample() {
@@ -100,18 +97,24 @@ public class MainActivity extends AppCompatActivity {
                         binding.imageSlider.setVisibility(View.VISIBLE);
                         break;
                     case 3:
-                        intExpendedList(0);
+                        intExpendedList(ExpandableHelper.ChildType.LISTMODE.ordinal());
                         binding.expandableListview.setVisibility(View.VISIBLE);
                         break;
                     case 4:
-                        intExpendedList(1);
+                        intExpendedList(ExpandableHelper.ChildType.WINDOW.ordinal());
                         binding.expandableListview.setVisibility(View.VISIBLE);
                         break;
                     case 5:
-                        intExpendedSample();
+                        intExpendedList(ExpandableHelper.ChildType.DASHBOARD.ordinal());
                         binding.expandableListview.setVisibility(View.VISIBLE);
                         break;
                     case 6:
+                        intExpendedList(ExpandableHelper.ChildType.DASHBOARD.ordinal());
+                        intExpendedSample();
+                        binding.expandableListview.setVisibility(View.VISIBLE);
+                        break;
+                    case 7:
+                        intExpendedList(ExpandableHelper.ChildType.LISTMODE.ordinal());
                         intExpendedSampleCustom();
                         binding.expandableListview.setVisibility(View.VISIBLE);
                         break;
@@ -208,9 +211,13 @@ public class MainActivity extends AppCompatActivity {
         binding.expandableListview.withChildMode(0);*/
 
         binding.expandableListview.withChildMode(childmode);
-        if (childmode == 1) {
-            binding.expandableListview.isWithImage(true);
+        if (childmode == ExpandableHelper.ChildType.DASHBOARD.ordinal()) {
+            //binding.expandableListview.isWithImage(true);
+            binding.expandableListview.withChildModeCount(3);
+        }else{
+            //binding.expandableListview.isWithImage(false);
         }
+
         binding.expandableListview.setGroupClickListener((group, groupPos) -> {
             binding.expandableListview.getGroups().get(groupPos);
             Log.d(TAG, "Group Clicked: You clicked : " + group.getName());

@@ -14,8 +14,11 @@
         <attr name="withChildArrow" format="boolean" />
         <attr name="childMode" format="integer">
             <enum name="listMode" value="0" />
-            <enum name="windowMode" value="1" />
+            <enum name="window" value="1" />
+            <enum name="dashboard" value="2" />
+            <enum name="slide" value="3" />
         </attr>
+        <attr name="childModeColumnCount" format="integer" />
     </declare-styleable>
 
 
