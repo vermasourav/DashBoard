@@ -212,10 +212,7 @@ public class MainActivity extends AppCompatActivity {
 
         binding.expandableListview.withChildMode(childmode);
         if (childmode == ExpandableHelper.ChildType.DASHBOARD.ordinal()) {
-            //binding.expandableListview.isWithImage(true);
             binding.expandableListview.withChildModeCount(3);
-        }else{
-            //binding.expandableListview.isWithImage(false);
         }
 
         binding.expandableListview.setGroupClickListener((group, groupPos) -> {
