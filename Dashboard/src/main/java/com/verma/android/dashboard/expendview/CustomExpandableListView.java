@@ -44,7 +44,7 @@ public class CustomExpandableListView extends ExpandableListView {
             isWithImage(typedArray.getBoolean(R.styleable.CustomExpandableListView_withImage, false));
             isWithSorting(typedArray.getBoolean(R.styleable.CustomExpandableListView_withSorting, false));
             isWithChildArrow(typedArray.getBoolean(R.styleable.CustomExpandableListView_withChildArrow, false));
-            withChildMode(typedArray.getResourceId(R.styleable.CustomExpandableListView_childMode, 0));
+            withChildMode(typedArray.getInteger(R.styleable.CustomExpandableListView_childMode, 0));
             withChildModeCount(typedArray.getInteger(R.styleable.CustomExpandableListView_childModeColumnCount, 2));
 
         } finally {
