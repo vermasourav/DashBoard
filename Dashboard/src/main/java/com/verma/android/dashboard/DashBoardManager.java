@@ -10,6 +10,7 @@ package com.verma.android.dashboard;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.GridLayout;
@@ -140,7 +141,7 @@ public class DashBoardManager {
     }
 
     private GlideUrl getGlideUrl(String pURL) {
-        if (pURL == null) {
+        if (TextUtils.isEmpty(pURL)) {
             return null;
         }
         LazyHeaders authHeaders = new LazyHeaders.Builder().setHeader("User-Agent", USER_AGENT).setHeader("APP-Agent", APP_AGENT).build();
@@ -152,6 +153,18 @@ public class DashBoardManager {
     }
 
     private void setImageWithGlide(Context context, final String pURL, final ImageView pImageView) {
+        if (setup.isDebugLogs()) {
+            Log.d(TAG, "setImageWithGlide pURL: " + pURL);
+        }
+        if(null == pImageView){
+            return;
+        }
+
+        if(TextUtils.isEmpty(pURL)){
+            pImageView.setImageResource(R.drawable.no_image);
+            pImageView.setVisibility(View.GONE);
+            return;
+        }
         GlideUrl glideURL = getGlideUrl(pURL);
         Glide.with(context)
                 .load(glideURL)
@@ -185,8 +198,7 @@ public class DashBoardManager {
             DashBoardGroup dashboardGroup = gson.fromJson(loadJSONFromAsset(context, fileName), DashBoardGroup.class);
             dashBoardItems =  convertDashboardGroupToDashboardItems(isSorting, dashboardGroup);
         } catch (Exception e) {
-            Log.d(TAG, "getDashBoardItems: " + e.getMessage());
-            e.printStackTrace();
+            Log.e(TAG, "getDashBoardItems: " + e.getMessage());
             //DO Nothing
         }
         return dashBoardItems;
