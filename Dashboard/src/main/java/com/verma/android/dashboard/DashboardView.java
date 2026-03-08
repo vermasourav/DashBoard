@@ -86,7 +86,7 @@ public class DashboardView extends FrameLayout {
             });
 
         }catch (Exception e){
-            Log.e(TAG, "Error in setDashBoardItem: " + e.getMessage(), e);
+           // Log.e(TAG, "Error in setDashBoardItem: " + e.getMessage(), e);
         }
     }
 

@@ -22,7 +22,7 @@
     {
       "description": "description Weather",
       "visible": true, "name": "Weather",
-      "image_url": "https://toppng.com/uploads/preview/weather-11552783005s4hd72yncm.png",
+      "image_url": "",
       "childs": []
     }
   ]
